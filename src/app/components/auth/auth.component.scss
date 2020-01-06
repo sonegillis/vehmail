@@ -1,0 +1,12 @@
+.auth-wrapper {
+  height: 500px;
+  width: 100%;
+  background-color: var(--auth-background-color);
+}
+
+@media only screen and (min-width: 960px) {
+  .auth-wrapper {
+    height: 500px;
+    width: 500px;
+  }
+}
