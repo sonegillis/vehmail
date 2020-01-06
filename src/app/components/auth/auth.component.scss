@@ -1,7 +1,11 @@
 .auth-wrapper {
   height: 500px;
-  width: 100%;
+  width: 100vw;
   background-color: var(--auth-background-color);
+}
+
+h1 {
+  font-size: 2em;
 }
 
 @media only screen and (min-width: 960px) {

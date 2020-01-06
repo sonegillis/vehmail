@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, EventEmitter, OnInit, Output, Renderer2, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-auth',
@@ -6,10 +6,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit {
+  @Output() closeAuthForm = new EventEmitter();
+  authType = '1';
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  switchAuthForm($event: any) {
+    console.log($event);
+    if ($event === '1') {
+      // signup
+
+    } else if ($event === '2') {
+      // login
+    }
+  }
 }

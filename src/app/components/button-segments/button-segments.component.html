@@ -1,1 +1,8 @@
-<p>button-segments works!</p>
+<div class="d-flex">
+  <button
+    [ngClass]="activeSegment == button.key ? 'active' : 'not-active'"
+    (click)="activateSegment(button.key)"
+    class="segment" *ngFor="let button of buttons | keyvalue">
+    {{button.value}}
+  </button>
+</div>

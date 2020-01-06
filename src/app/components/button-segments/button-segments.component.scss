@@ -1,0 +1,40 @@
+$segment-border: 1px solid var(--primary-color);
+$segment-border-radius: 50px;
+
+.segment {
+  border-top: $segment-border;
+  border-bottom: $segment-border;
+  border-left: 0;
+  border-right: 0;
+  cursor: pointer;
+  padding: 8px 28px;
+
+  &:first-of-type {
+    border-top-left-radius: $segment-border-radius;
+    border-bottom-left-radius: $segment-border-radius;
+    border-left: $segment-border;
+  }
+  &:last-of-type {
+    border-top-right-radius: $segment-border-radius;
+    border-bottom-right-radius: $segment-border-radius;
+    border-right: $segment-border;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  min-width: 96px;
+}
+
+.active {
+  background: linear-gradient(45deg, var(--primary-color) 0%, rgba(106, 198, 240, 1) 100%);
+  color: #fff;
+}
+
+.not-active {
+  background: #fff;
+  color: var(--primary-color);
+}
