@@ -9,6 +9,7 @@ export class AuthComponent implements OnInit {
   @Output() closeAuthForm = new EventEmitter();
   signupLevel = 1;
   authType = '1';
+  insertVerificationCode = false;
 
   constructor() { }
 
@@ -18,12 +19,24 @@ export class AuthComponent implements OnInit {
   nextSignupPage() {
     if (this.signupLevel === 1) {
       this.signupLevel = 2;
+    } else if (this.signupLevel === 2) {
+      this.signupLevel = 3;
     }
   }
 
   prevSignupPage() {
     if (this.signupLevel === 2) {
       this.signupLevel = 1;
+    } else if (this.signupLevel === 3) {
+      this.signupLevel = 2;
     }
+  }
+
+  verityPhone() {
+    this.insertVerificationCode = true;
+  }
+
+  createAccount() {
+
   }
 }

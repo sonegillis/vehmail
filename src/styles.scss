@@ -1244,6 +1244,10 @@ body.mobile-nav-active #mobile-nav-toggle {
   box-shadow: 2px 2px 8px var(--primary-color);
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .my-btn {
   background: #fff;
   border: 2px solid var(--primary-color);
@@ -1254,6 +1258,10 @@ body.mobile-nav-active #mobile-nav-toggle {
   padding: 8px 28px;
   border-radius: 20px;
   transition: all 0.5s ease 0s;
+  color: var(--primary-color);
+}
+
+.text-color-primary {
   color: var(--primary-color);
 }
 
