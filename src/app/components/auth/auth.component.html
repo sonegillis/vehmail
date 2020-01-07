@@ -8,12 +8,12 @@
     <ng-container *ngIf="authType === '1' else login">
       <h1 class="mt-4">Sign Up for Free</h1>
       <div class="signup-form-split d-flex justify-content-center mb-1">
-        <button class="mr-1 active">1</button>
-        <button class="not-active">2</button>
-        <button class="ml-1 not-active">3</button>
+        <p class="mr-1 active">1</p>
+        <p class="not-active">2</p>
+        <p class="ml-1 not-active">3</p>
       </div>
       <div class="h-100 w-100 d-flex flex-column">
-        <form #ngForm>
+        <form #ngForm *ngIf="signupLevel === 1" class="animated fadeIn">
           <div class="w-100 mb-2">
             <input class="my-input w-100" type="text" placeholder="First Name">
           </div>
@@ -24,7 +24,29 @@
             <input class="my-input w-100" type="text" placeholder="Country">
           </div>
           <div class="w-100">
-            <input class="my-input my-btn w-50 float-right" type="submit" value="Next" />
+            <button (click)="nextSignupPage()" class="my-btn w-50 float-right d-flex align-items-center justify-content-center">
+              <span>NEXT</span><mat-icon aria-hidden="false" aria-label="Example home icon">arrow_forward</mat-icon>
+            </button>
+          </div>
+        </form>
+        <form #ngForm *ngIf="signupLevel === 2" class="animated fadeIn">
+          <div class="w-100 mb-2">
+            <input class="my-input w-100" type="text" placeholder="Username">
+          </div>
+          <div class="w-100 mb-2">
+            <input class="my-input w-100" type="text" placeholder="Password">
+          </div>
+          <div class="w-100 mb-2">
+            <input class="my-input w-100" type="text" placeholder="Confirm Password">
+          </div>
+          <div class="w-100 d-flex">
+            <button (click)="prevSignupPage()" class="my-btn w-50 d-flex align-items-center justify-content-center">
+              <mat-icon aria-hidden="false" aria-label="Example home icon">arrow_backward</mat-icon>
+              <span>BACK</span>
+            </button>
+            <button (click)="nextSignupPage()" class="my-btn w-50 d-flex align-items-center justify-content-center">
+              <span>NEXT</span><mat-icon aria-hidden="false" aria-label="Example home icon">arrow_forward</mat-icon>
+            </button>
           </div>
         </form>
       </div>

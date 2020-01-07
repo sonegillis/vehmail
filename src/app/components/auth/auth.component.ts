@@ -7,6 +7,7 @@ import {Component, ElementRef, EventEmitter, OnInit, Output, Renderer2, ViewChil
 })
 export class AuthComponent implements OnInit {
   @Output() closeAuthForm = new EventEmitter();
+  signupLevel = 1;
   authType = '1';
 
   constructor() { }
@@ -14,13 +15,15 @@ export class AuthComponent implements OnInit {
   ngOnInit() {
   }
 
-  switchAuthForm($event: any) {
-    console.log($event);
-    if ($event === '1') {
-      // signup
+  nextSignupPage() {
+    if (this.signupLevel === 1) {
+      this.signupLevel = 2;
+    }
+  }
 
-    } else if ($event === '2') {
-      // login
+  prevSignupPage() {
+    if (this.signupLevel === 2) {
+      this.signupLevel = 1;
     }
   }
 }

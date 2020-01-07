@@ -1231,12 +1231,17 @@ body.mobile-nav-active #mobile-nav-toggle {
   border: 1px solid var(--primary-color);
   color: #000;
   margin: 2px 0;
-  font-size: 1.6em;
+  font-size: 1.4em;
   border-radius: 4px;
 }
 
+.my-input::placeholder {
+  color: grey;
+  font-size: 16px;
+}
+
 .my-input:focus {
-  box-shadow: 2px 2px 2px var(--primary-color);
+  box-shadow: 2px 2px 8px var(--primary-color);
 }
 
 .my-btn {
