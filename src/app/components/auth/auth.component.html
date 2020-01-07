@@ -1,27 +1,55 @@
 
-<section class="auth-wrapper p-2 animated zoomIn">
+<section class="auth-wrapper p-4 animated zoomIn">
   <div class="close-icon d-flex justify-content-end" (click)="closeAuthForm.emit()">
     <mat-icon aria-hidden="false" aria-label="Example home icon">close</mat-icon>
   </div>
-  <div class="d-flex flex-column align-items-center">
+  <div class="h-100 d-flex flex-column align-items-center">
     <app-button-segments (changed)="authType = $event" [buttons]="{'1': 'Signup', '2': 'Login'}"></app-button-segments>
-    <ng-container *ngIf="authType === '1' else login" class="h-100 d-flex flex-column justify-content-center">
+    <ng-container *ngIf="authType === '1' else login">
       <h1 class="mt-4">Sign Up for Free</h1>
+      <div class="signup-form-split d-flex justify-content-center mb-1">
+        <button class="mr-1 active">1</button>
+        <button class="not-active">2</button>
+        <button class="ml-1 not-active">3</button>
+      </div>
+      <div class="h-100 w-100 d-flex flex-column">
+        <form #ngForm>
+          <div class="w-100 mb-2">
+            <input class="my-input w-100" type="text" placeholder="First Name">
+          </div>
+          <div class="w-100 mb-2">
+            <input class="my-input w-100" type="text" placeholder="Last Name">
+          </div>
+          <div class="w-100 mb-2">
+            <input class="my-input w-100" type="text" placeholder="Country">
+          </div>
+          <div class="w-100">
+            <input class="my-input my-btn w-50 float-right" type="submit" value="Next" />
+          </div>
+        </form>
+      </div>
     </ng-container>
   </div>
 </section>
 
+<!-- Login -->
 <ng-template #login>
   <h1 class="mt-4"> Log In </h1>
-  <form #ngForm class="w-100">
-    <div class="w-100">
-      <input class="my-input w-100" type="text" placeholder="Username">
-    </div>
-    <div class="w-100">
-      <input class="my-input w-100" type="password" placeholder="password">
-    </div>
-    <div class="w-100">
-      <input class="my-input" type="submit" class="my-btn w-50 float-right" value="LogIn" />
-    </div>
-  </form>
+  <div class="h-100 d-flex flex-column w-100">
+    <form #ngForm class="w-100">
+      <div class="w-100 mb-2">
+        <input class="my-input w-100" type="text" placeholder="Username">
+      </div>
+      <div class="w-100 mb-2">
+        <input class="my-input w-100" type="password" placeholder="password">
+      </div>
+      <div class="w-100">
+        <input class="my-input my-btn w-50 float-right" type="submit" value="LogIn" />
+      </div>
+    </form>
+  </div>
 </ng-template>
+<!-- login end -->
+
+<!-- signup -->
+

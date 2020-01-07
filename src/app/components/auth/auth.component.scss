@@ -8,6 +8,24 @@ h1 {
   font-size: 2em;
 }
 
+.signup-form-split {
+  button {
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+    border: 0;
+  }
+  .active {
+    color: var(--primary-color);
+    background-color: #fff;
+    border: 1px solid var(--primary-color);
+  }
+  .not-active {
+    color: #fff;
+    background-color: var(--primary-color);
+  }
+}
+
 @media only screen and (min-width: 960px) {
   .auth-wrapper {
     height: 500px;
