@@ -14,15 +14,36 @@
       </div>
       <div class="h-100 w-100 d-flex flex-column">
         <form #ngForm *ngIf="signupLevel === 1" class="animated fadeIn">
-          <div class="w-100 mb-2">
-            <input class="my-input w-100" type="text" placeholder="First Name">
-          </div>
-          <div class="w-100 mb-2">
-            <input class="my-input w-100" type="text" placeholder="Last Name">
-          </div>
-          <div class="w-100 mb-2">
-            <input class="my-input w-100" type="text" placeholder="Country">
-          </div>
+          <label>
+            Full Names
+            <div class="w-100 mb-2 my-input">
+              <mat-icon aria-hidden="false" aria-label="Example home icon">person</mat-icon>
+              <input class="w-100" type="text" placeholder="Full Names">
+            </div>
+          </label>
+          <label>
+            <div class="w-100 mb-2 my-input">
+              <mat-icon aria-hidden="false" aria-label="Example home icon">flag</mat-icon>
+              <input list="countries" name="country" class="w-100" placeholder="Country">
+              <datalist id="countries">
+                <option *ngFor="let country of countries" [value]="country.country_name" >
+              </datalist>
+            </div>
+          </label>
+          <label>
+            City
+            <div class="w-100 mb-2 my-input">
+              <mat-icon aria-hidden="false" aria-label="Example home icon">apartment</mat-icon>
+              <input class="w-100" type="text" placeholder="City">
+            </div>
+          </label>
+          <label>
+            Phone number
+            <div class="w-100 mb-2 my-input">
+              <mat-icon aria-hidden="false" aria-label="Example home icon">call</mat-icon>
+              <input class="w-100" type="text" placeholder="Phone number">
+            </div>
+          </label>
           <div class="w-100">
             <button (click)="nextSignupPage()" class="my-btn w-50 float-right d-flex align-items-center justify-content-center">
               <span>NEXT</span><mat-icon aria-hidden="false" aria-label="Example home icon">arrow_forward</mat-icon>
@@ -30,33 +51,44 @@
           </div>
         </form>
         <form #ngForm *ngIf="signupLevel === 2" class="animated fadeIn">
-          <div class="w-100 mb-2">
-            <input class="my-input w-100" type="text" placeholder="Username">
-          </div>
-          <div class="w-100 mb-2">
-            <input class="my-input w-100" type="text" placeholder="Password">
-          </div>
-          <div class="w-100 mb-2">
-            <input class="my-input w-100" type="text" placeholder="Confirm Password">
-          </div>
-          <div class="w-100 d-flex">
-            <button (click)="prevSignupPage()" class="my-btn w-50 d-flex align-items-center justify-content-center">
+          <label>
+            Username
+            <div class="w-100 mb-2 my-input">
+              <mat-icon aria-hidden="false" aria-label="Example home icon">call</mat-icon>
+              <input class="w-100" type="text" placeholder="First Name">
+            </div>
+          </label>
+          <label>
+            Password
+            <div class="w-100 mb-2 my-input">
+              <mat-icon aria-hidden="false" aria-label="Example home icon">lock</mat-icon>
+              <input class="w-100" type="text" placeholder="Password">
+              <mat-icon aria-hidden="false" aria-label="Example home icon">visibility_off</mat-icon>
+            </div>
+          </label>
+          <label>
+            Confirm Password
+            <div class="w-100 mb-2 my-input">
+              <mat-icon aria-hidden="false" aria-label="Example home icon">lock</mat-icon>
+              <input class="w-100" type="text" placeholder="Confirm Password">
+              <mat-icon aria-hidden="false" aria-label="Example home icon">visibility_off</mat-icon>
+            </div>
+          </label>
+          <div class="w-100 d-flex justify-content-between">
+            <button (click)="prevSignupPage()" class="my-btn w-45 d-flex align-items-center justify-content-center">
               <mat-icon aria-hidden="false" aria-label="Example home icon">arrow_backward</mat-icon>
               <span>BACK</span>
             </button>
-            <button (click)="nextSignupPage()" class="my-btn w-50 d-flex align-items-center justify-content-center">
+            <button (click)="nextSignupPage()" class="my-btn w-45 d-flex align-items-center justify-content-center">
               <span>NEXT</span><mat-icon aria-hidden="false" aria-label="Example home icon">arrow_forward</mat-icon>
             </button>
           </div>
         </form>
         <form #ngForm *ngIf="signupLevel === 3" class="animated fadeIn">
-          <div class="w-100 mb-2">
-            <input class="my-input w-100" type="text" placeholder="Telephone" [disabled]="insertVerificationCode">
-            <p *ngIf="insertVerificationCode" (click)="insertVerificationCode = false" class="text-color-primary cursor-pointer">Edit Phone Number?</p>
-          </div>
+          <p>We have sent an </p>
           <div class="w-100 mb-2 d-flex">
             <input class="my-input w-50" type="text" placeholder="Confirmation Code" [disabled]="!insertVerificationCode">
-            <p *ngIf="!insertVerificationCode" (click)="verityPhone()" class="text-color-primary cursor-pointer ml-2 w-50 align-self-end">Resend SMS?</p>
+            <p *ngIf="insertVerificationCode" (click)="verityPhone()" class="text-color-primary cursor-pointer ml-2 w-50 align-self-end">Resend SMS?</p>
           </div>
           <div class="w-100 d-flex">
             <button (click)="prevSignupPage()" class="my-btn w-50 d-flex align-items-center justify-content-center">
@@ -81,14 +113,15 @@
   <h1 class="mt-4"> Log In </h1>
   <div class="h-100 d-flex flex-column w-100">
     <form #ngForm class="w-100">
-      <div class="w-100 mb-2">
-        <input class="my-input w-100" type="text" placeholder="Username">
+      <div class="w-100 mb-2 position-relative">
+        <input class="my-input input-username w-100" type="text" placeholder="Username">
+        <p class="position-absolute input-completion">@vehmail.com</p>
       </div>
       <div class="w-100 mb-2">
         <input class="my-input w-100" type="password" placeholder="password">
       </div>
       <div class="w-100">
-        <input class="my-input my-btn w-50 float-right" type="submit" value="LogIn" />
+        <button class="my-input my-btn w-50 float-right" type="submit">Login</button>
       </div>
     </form>
   </div>

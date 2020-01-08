@@ -1231,17 +1231,29 @@ body.mobile-nav-active #mobile-nav-toggle {
   border: 1px solid var(--primary-color);
   color: #000;
   margin: 2px 0;
-  font-size: 1.4em;
-  border-radius: 4px;
+  font-size: 15px;
+  border-radius: 1px;
+  display: flex;
+
+  input {
+    border: none;
+    margin: 0 12px;
+    &:focus {
+      outline: none;
+    }
+    &::placeholder {
+      color: rgba(0,0,0,.45);
+      font-size: 15px;
+    }
+  }
+
+  mat-icon {
+    color: rgba(0,0,0,0.8);
+  }
 }
 
-.my-input::placeholder {
-  color: grey;
-  font-size: 16px;
-}
-
-.my-input:focus {
-  box-shadow: 2px 2px 8px var(--primary-color);
+p {
+  margin: 0;
 }
 
 .cursor-pointer {
@@ -1249,8 +1261,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .my-btn {
-  background: #fff;
-  border: 2px solid var(--primary-color);
+  background: linear-gradient(45deg, var(--primary-color) 0%, rgba(106, 198, 240, 1) 100%);
+  color: #fff;
+  border: 0;
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
   font-size: 16px;
@@ -1258,7 +1271,11 @@ body.mobile-nav-active #mobile-nav-toggle {
   padding: 8px 28px;
   border-radius: 20px;
   transition: all 0.5s ease 0s;
-  color: var(--primary-color);
+
+}
+
+.my-btn:focus {
+  outline: none;
 }
 
 .text-color-primary {
@@ -1266,9 +1283,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .my-btn:hover {
-  background: linear-gradient(45deg, var(--primary-color) 0%, rgba(106, 198, 240, 1) 100%);
-  color: #fff;
-  border: 0;
+  background: #fff;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
 }
 
 html, body { height: 100%; }

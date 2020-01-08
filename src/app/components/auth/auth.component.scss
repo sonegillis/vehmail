@@ -1,7 +1,7 @@
 .auth-wrapper {
-  height: 500px;
   width: 100vw;
   background-color: var(--auth-background-color);
+  border-radius: 2px;
 }
 
 h1 {
@@ -30,9 +30,27 @@ h1 {
   }
 }
 
+.input-completion {
+  right: 15px;
+  top: 26%;
+  font-size: 1.2em;
+  color: var(--primary-color);
+}
+
+.input-username {
+  padding-right: 30%;
+}
+
+.w-45 {
+  width: 45%;
+}
+
+form label {
+  display: block;
+  font-size: 15px;
+}
 @media only screen and (min-width: 960px) {
   .auth-wrapper {
-    height: 500px;
     width: 500px;
   }
 }

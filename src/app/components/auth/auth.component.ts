@@ -1,4 +1,6 @@
-import {Component, ElementRef, EventEmitter, OnInit, Output, Renderer2, ViewChild} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {UsermanagerService} from '../../services/usermanager/usermanager.service';
+import countries from '../../../assets/json/countries.json';
 
 @Component({
   selector: 'app-auth',
@@ -10,8 +12,19 @@ export class AuthComponent implements OnInit {
   signupLevel = 1;
   authType = '1';
   insertVerificationCode = false;
+  countries = countries;
+  signupData = {
+    fullNames: '',
+    country: this.userManager.userGeoInfo.country_name,
+    city: '',
+    phoneNumber: '',
+    username: '',
+    password: ''
+  };
 
-  constructor() { }
+  constructor(private userManager: UsermanagerService) {
+    console.log('countries is ', countries);
+  }
 
   ngOnInit() {
   }

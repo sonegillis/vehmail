@@ -25,6 +25,7 @@
     "animate.css": "^3.7.2",
     "aos": "^2.3.4",
     "ng-lightning": "^4.8.2",
+    "primeng": "^9.0.0-rc.2",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
