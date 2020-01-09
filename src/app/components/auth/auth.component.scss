@@ -1,7 +1,8 @@
 .auth-wrapper {
   width: 100vw;
   background-color: var(--auth-background-color);
-  border-radius: 2px;
+  border-radius: 4px;
+  box-shadow: 2px 2px 2px 2px #fff;
 }
 
 h1 {
@@ -21,6 +22,10 @@ h1 {
   .active {
     color: #fff;
     background-color: var(--primary-color);
+  }
+
+  input.verfication-code::placeholder {
+    text-align: center;
   }
 
   .not-active {

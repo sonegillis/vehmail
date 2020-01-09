@@ -1235,7 +1235,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   border-radius: 1px;
   display: flex;
 
-  input {
+  input, select {
     border: none;
     margin: 0 12px;
     &:focus {
@@ -1245,8 +1245,11 @@ body.mobile-nav-active #mobile-nav-toggle {
       color: rgba(0,0,0,.45);
       font-size: 15px;
     }
-  }
 
+  }
+  select {
+    background: transparent;
+  }
   mat-icon {
     color: rgba(0,0,0,0.8);
   }

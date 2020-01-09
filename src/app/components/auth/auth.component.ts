@@ -11,22 +11,29 @@ export class AuthComponent implements OnInit {
   @Output() closeAuthForm = new EventEmitter();
   signupLevel = 1;
   authType = '1';
-  insertVerificationCode = false;
+  insertVerificationCode = true;
   countries = countries;
+  passwordType = 'password';
+  confirmPasswordType = 'password';
   signupData = {
     fullNames: '',
-    country: this.userManager.userGeoInfo.country_name,
+    country: '',
     city: '',
     phoneNumber: '',
     username: '',
-    password: ''
+    password: '',
+    diallingCode: '',
+    verficationCode: ''
   };
 
   constructor(private userManager: UsermanagerService) {
-    console.log('countries is ', countries);
+
   }
 
   ngOnInit() {
+    this.signupData.city = this.userManager.userGeoInfo.city;
+    this.signupData.country = this.userManager.userGeoInfo.country_name;
+    this.signupData.diallingCode = this.userManager.userGeoInfo.calling_code;
   }
 
   nextSignupPage() {

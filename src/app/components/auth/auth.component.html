@@ -18,30 +18,30 @@
             Full Names
             <div class="w-100 mb-2 my-input">
               <mat-icon aria-hidden="false" aria-label="Example home icon">person</mat-icon>
-              <input class="w-100" type="text" placeholder="Full Names">
+              <input name="fullNames" [(ngModel)]="signupData.fullNames" class="w-100" type="text" placeholder="Full Names">
             </div>
           </label>
           <label>
             <div class="w-100 mb-2 my-input">
               <mat-icon aria-hidden="false" aria-label="Example home icon">flag</mat-icon>
-              <input list="countries" name="country" class="w-100" placeholder="Country">
-              <datalist id="countries">
-                <option *ngFor="let country of countries" [value]="country.country_name" >
-              </datalist>
+              <select name="country" class="w-100" [(ngModel)]="signupData.diallingCode">
+                <option *ngFor="let country of countries" [value]="country.dialling_code">{{country.country_name}}</option>
+              </select>
             </div>
           </label>
           <label>
             City
             <div class="w-100 mb-2 my-input">
               <mat-icon aria-hidden="false" aria-label="Example home icon">apartment</mat-icon>
-              <input class="w-100" type="text" placeholder="City">
+              <input class="w-100" type="text" placeholder="City" name="city" [(ngModel)]="signupData.city">
             </div>
           </label>
           <label>
             Phone number
             <div class="w-100 mb-2 my-input">
               <mat-icon aria-hidden="false" aria-label="Example home icon">call</mat-icon>
-              <input class="w-100" type="text" placeholder="Phone number">
+              <span>{{signupData.diallingCode}}</span>
+              <input name="phoneNumber" [(ngModel)]="signupData.phoneNumber" class="w-100" type="number" placeholder="Phone number">
             </div>
           </label>
           <div class="w-100">
@@ -55,23 +55,25 @@
             Username
             <div class="w-100 mb-2 my-input">
               <mat-icon aria-hidden="false" aria-label="Example home icon">call</mat-icon>
-              <input class="w-100" type="text" placeholder="First Name">
+              <input name="username" [(ngModel)]="signupData.username" class="w-100" type="text" placeholder="First Name">
             </div>
           </label>
           <label>
             Password
             <div class="w-100 mb-2 my-input">
               <mat-icon aria-hidden="false" aria-label="Example home icon">lock</mat-icon>
-              <input class="w-100" type="text" placeholder="Password">
-              <mat-icon aria-hidden="false" aria-label="Example home icon">visibility_off</mat-icon>
+              <input name="password" [(ngModel)]="signupData.password" class="w-100" [type]="passwordType" placeholder="Password">
+              <mat-icon (click)="passwordType = 'text'" *ngIf="passwordType === 'password'" aria-hidden="false" aria-label="Example home icon">visibility_off</mat-icon>
+              <mat-icon (click)="passwordType = 'password'" *ngIf="passwordType === 'text'" aria-hidden="false" aria-label="Example home icon">visibility</mat-icon>
             </div>
           </label>
           <label>
             Confirm Password
             <div class="w-100 mb-2 my-input">
               <mat-icon aria-hidden="false" aria-label="Example home icon">lock</mat-icon>
-              <input class="w-100" type="text" placeholder="Confirm Password">
-              <mat-icon aria-hidden="false" aria-label="Example home icon">visibility_off</mat-icon>
+              <input class="w-100" [type]="confirmPasswordType" placeholder="Confirm Password">
+              <mat-icon (click)="confirmPasswordType = 'text'" *ngIf="confirmPasswordType === 'password'" aria-hidden="false" aria-label="Example home icon">visibility_off</mat-icon>
+              <mat-icon (click)="confirmPasswordType = 'password'" *ngIf="confirmPasswordType === 'text'" aria-hidden="false" aria-label="Example home icon">visibility</mat-icon>
             </div>
           </label>
           <div class="w-100 d-flex justify-content-between">
@@ -85,21 +87,23 @@
           </div>
         </form>
         <form #ngForm *ngIf="signupLevel === 3" class="animated fadeIn">
-          <p>We have sent an </p>
-          <div class="w-100 mb-2 d-flex">
-            <input class="my-input w-50" type="text" placeholder="Confirmation Code" [disabled]="!insertVerificationCode">
+          <p>We have sent an SMS verfication code to
+            <span class="text-color-primary font-weight-bold">
+              {{signupData.diallingCode}} {{signupData.phoneNumber}}
+              <mat-icon (click)="signupLevel = 1" class="cursor-pointer" aria-hidden="false" aria-label="Example home icon">edit</mat-icon>
+            </span>
+          </p>
+          <div class="w-100 mb-2 d-flex justify-content-center mb-4">
+            <input class="my-input w-50 verfication-code" type="text" placeholder="Confirmation Code" [disabled]="!insertVerificationCode">
             <p *ngIf="insertVerificationCode" (click)="verityPhone()" class="text-color-primary cursor-pointer ml-2 w-50 align-self-end">Resend SMS?</p>
           </div>
-          <div class="w-100 d-flex">
-            <button (click)="prevSignupPage()" class="my-btn w-50 d-flex align-items-center justify-content-center">
+          <div class="w-100 d-flex justify-content-between">
+            <button (click)="prevSignupPage()" class="my-btn w-48 d-flex align-items-center justify-content-center">
               <mat-icon aria-hidden="false" aria-label="Example home icon">arrow_backward</mat-icon>
               <span>BACK</span>
             </button>
-            <button *ngIf="insertVerificationCode" (click)="createAccount()" class="my-btn w-50 d-flex align-items-center justify-content-center">
+            <button *ngIf="insertVerificationCode" (click)="createAccount()" class="my-btn w-48 d-flex align-items-center justify-content-center">
               <span>CREATE ACCOUNT</span>
-            </button>
-            <button *ngIf="!insertVerificationCode" (click)="verityPhone()" class="my-btn w-50 d-flex align-items-center justify-content-center">
-              <span>SEND SMS</span>
             </button>
           </div>
         </form>
