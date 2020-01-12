@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {UsermanagerService} from '../../services/usermanager/usermanager.service';
 import countries from '../../../assets/json/countries.json';
 
@@ -9,6 +9,7 @@ import countries from '../../../assets/json/countries.json';
 })
 export class AuthComponent implements OnInit {
   @Output() closeAuthForm = new EventEmitter();
+  @ViewChild('phoneNumber', {static: false}) phoneNumber;
   signupLevel = 1;
   authType = '1';
   insertVerificationCode = true;
@@ -22,6 +23,7 @@ export class AuthComponent implements OnInit {
     phoneNumber: '',
     username: '',
     password: '',
+    confirmPassword: '',
     diallingCode: '',
     verficationCode: ''
   };
@@ -58,5 +60,10 @@ export class AuthComponent implements OnInit {
 
   createAccount() {
 
+  }
+
+  editPhoneNumber() {
+    this.signupLevel = 1;
+    this.phoneNumber.focus();
   }
 }

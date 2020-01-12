@@ -1230,7 +1230,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   outline: 0 !important;
   border: 1px solid var(--primary-color);
   color: #000;
-  margin: 2px 0;
+  margin: 2px 0 0 0;
   font-size: 15px;
   border-radius: 1px;
   display: flex;
@@ -1281,11 +1281,20 @@ p {
   outline: none;
 }
 
+.my-btn[disabled] {
+  background: #eeeeee;
+}
+
 .text-color-primary {
   color: var(--primary-color);
 }
 
-.my-btn:hover {
+.validation-error {
+  color: darkred;
+  font-style: italic;
+}
+
+.my-btn:hover:not([disabled]) {
   background: #fff;
   color: var(--primary-color);
   border: 2px solid var(--primary-color);
