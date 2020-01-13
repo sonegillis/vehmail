@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {SERVICES, TOKEN} from '../../../config';
+import {SERVICEURLS, TOKEN} from '../../../config';
 import {Toolkits} from '../../utils';
 
 @Injectable({
@@ -33,7 +33,7 @@ export class UsermanagerService {
       apiKey: TOKEN.API_GEO,
       ip: this.userIP
     };
-    const uri = SERVICES.getGeoInformation + Toolkits.getRequestParams(params);
+    const uri = SERVICEURLS.getGeoInformation + Toolkits.getRequestParams(params);
     console.log('uri is ', uri);
     this.http.get(uri).subscribe(response => {
       console.log(response);
@@ -53,6 +53,21 @@ export class UsermanagerService {
           console.log(error);
           reject(error);
         });
+    });
+  }
+
+  verifyPhone(phoneNumber: string) {
+    return new Promise((resolve, reject) => {
+      const url = `${SERVICEURLS.verifyPhone}?phone=${phoneNumber}`;
+      this.http.get(url).subscribe(response => {
+        const result = response as any;
+        const {status} = result;
+        if (status === 200) {
+          resolve();
+        } else {
+          reject();
+        }
+      }, error => reject());
     });
   }
 }

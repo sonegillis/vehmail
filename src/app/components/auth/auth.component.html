@@ -1,5 +1,5 @@
 
-<section class="auth-wrapper p-4 animated zoomIn position-relative">
+<section class="auth-wrapper p-4 animated zoomIn position-relative" [ngClass]="isLoading && 'blur'">
   <div class="close-icon d-flex justify-content-end" (click)="closeAuthForm.emit()">
     <mat-icon aria-hidden="false" aria-label="Example home icon">close</mat-icon>
   </div>
@@ -15,14 +15,23 @@
       <div class="h-100 w-100 d-flex flex-column">
         <form #signupLevelOne="ngForm" *ngIf="signupLevel === 1" class="animated fadeIn" (ngSubmit)="nextSignupPage()">
           <label>
-            Full Names
+            First Name
             <div class="w-100 my-input">
               <mat-icon aria-hidden="false" aria-label="Example home icon">person</mat-icon>
-              <input #fullNames="ngModel" name="fullNames" [(ngModel)]="signupData.fullNames" class="w-100" type="text" placeholder="Full Names" pattern="\w{2,}\s\w{2,}.*" required>
+              <input #firstName="ngModel" name="firstName" [(ngModel)]="signupData.firstName" class="w-100" type="text" placeholder="First Name"  required>
             </div>
-            <div *ngIf="fullNames.invalid && fullNames.dirty">
-              <small *ngIf="fullNames.errors.required" class="float-right validation-error">*This field is required</small>
-              <small *ngIf="fullNames.errors.pattern" class="float-right validation-error">*You must enter atleast 2 names</small>
+            <div *ngIf="firstName.invalid && firstName.dirty">
+              <small *ngIf="firstName.errors.required" class="float-right validation-error">*This field is required</small>
+            </div>
+          </label>
+          <label>
+            Last Name
+            <div class="w-100 my-input">
+              <mat-icon aria-hidden="false" aria-label="Example home icon">person</mat-icon>
+              <input #lastName="ngModel" name="lastName" [(ngModel)]="signupData.lastName" class="w-100" type="text" placeholder="Last Name" required>
+            </div>
+            <div *ngIf="lastName.invalid && lastName.dirty">
+              <small *ngIf="lastName.errors.required" class="float-right validation-error">*This field is required</small>
             </div>
           </label>
           <label>
@@ -44,6 +53,16 @@
             </div>
             <div *ngIf="city.invalid && city.dirty">
               <small *ngIf="city.errors.required" class="float-right validation-error">*This field is required</small>
+            </div>
+          </label>
+          <label>
+            Address
+            <div class="w-100 my-input">
+              <mat-icon aria-hidden="false" aria-label="Example home icon">apartment</mat-icon>
+              <input #address="ngModel" class="w-100" type="text" placeholder="Address" name="address" [(ngModel)]="signupData.address" required="">
+            </div>
+            <div *ngIf="address.invalid && address.dirty">
+              <small *ngIf="address.errors.required" class="float-right validation-error">*This field is required</small>
             </div>
           </label>
           <label>
@@ -69,6 +88,7 @@
             <div class="w-100 my-input">
               <mat-icon aria-hidden="false" aria-label="Example home icon">call</mat-icon>
               <input #username="ngModel" name="username" [(ngModel)]="signupData.username" class="w-100" type="text" placeholder="Username" required>
+              <span>@vehmail.com</span>
             </div>
             <div *ngIf="username.invalid && username.dirty">
               <small *ngIf="username.errors.required" class="float-right validation-error">*This field is required</small>
@@ -117,10 +137,14 @@
               <mat-icon (click)="editPhoneNumber()" class="cursor-pointer" aria-hidden="false" aria-label="Example home icon">edit</mat-icon>
             </span>
           </p>
-          <div class="w-100 d-flex justify-content-center mb-4">
-            <input class="my-input w-50 verfication-code" type="text" placeholder="Confirmation Code" [disabled]="!insertVerificationCode">
+          <label>
+            Confirmation Code
+            <div class="w-100 my-input">
+              <span>V-</span>
+              <input #confirmationCode="ngModel" class="w-100" [type]="confirmationCode" placeholder="Confirmation Code" [(ngModel)]="signupData.verficationCode" name="confirmPassword" required>
+            </div>
             <p *ngIf="insertVerificationCode" (click)="verityPhone()" class="text-color-primary cursor-pointer ml-2 w-50 align-self-end">Resend SMS?</p>
-          </div>
+          </label>
           <div class="w-100 d-flex justify-content-between">
             <button (click)="prevSignupPage()" class="my-btn w-48 d-flex align-items-center justify-content-center">
               <mat-icon aria-hidden="false" aria-label="Example home icon">arrow_backward</mat-icon>
@@ -134,11 +158,12 @@
       </div>
     </ng-container>
   </div>
-<!--  <div class="position-absolute h-100 w-100 signup-loading d-flex justify-content-center align-items-center">-->
-<!--    <img src="../../../assets/gif/loading.gif" />-->
-<!--  </div>-->
-</section>
 
+</section>
+<div *ngIf="isLoading" class="position-absolute h-100 w-100 signup-loading d-flex flex-column justify-content-center align-items-center">
+  <img src="../../../assets/gif/loading.gif" />
+  <span>{{loaderMessage}}</span>
+</div>
 <!-- Login -->
 <ng-template #login>
   <h1 class="mt-4"> Log In </h1>

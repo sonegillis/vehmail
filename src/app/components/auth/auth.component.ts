@@ -16,8 +16,10 @@ export class AuthComponent implements OnInit {
   countries = countries;
   passwordType = 'password';
   confirmPasswordType = 'password';
+  isLoading = false;
   signupData = {
-    fullNames: '',
+    firstName: '',
+    lastName: '',
     country: '',
     city: '',
     phoneNumber: '',
@@ -25,8 +27,10 @@ export class AuthComponent implements OnInit {
     password: '',
     confirmPassword: '',
     diallingCode: '',
-    verficationCode: ''
+    verficationCode: '',
+    address: ''
   };
+  loaderMessage: string;
 
   constructor(private userManager: UsermanagerService) {
 
@@ -42,7 +46,15 @@ export class AuthComponent implements OnInit {
     if (this.signupLevel === 1) {
       this.signupLevel = 2;
     } else if (this.signupLevel === 2) {
-      this.signupLevel = 3;
+      this.loaderMessage = 'Please be patient while we send you an SMS verification code';
+      this.isLoading = true;
+      this.userManager.verifyPhone(this.signupData.diallingCode + this.signupData.phoneNumber).then(result => {
+        console.log(result);
+        this.isLoading = false;
+        this.signupLevel = 3;
+      }).catch(error => {
+        console.log(error);
+      });
     }
   }
 

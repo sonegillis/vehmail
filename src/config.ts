@@ -1,10 +1,11 @@
 export let GATEWAY = {
-  SERVER_IP: '',
+  SERVER_IP: 'https://mail.vehseh.com/',
   GEO_IP: 'https://api.ipgeolocation.io'
 };
 
-export let SERVICES = {
+export let SERVICEURLS = {
   getGeoInformation: GATEWAY.GEO_IP + '/ipgeo?',
+  verifyPhone: GATEWAY.SERVER_IP + 'api/account/verify-phone/'
 };
 
 export let TOKEN = {
