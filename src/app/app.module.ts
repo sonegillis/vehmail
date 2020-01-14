@@ -7,6 +7,10 @@ import {ComponentsModule} from './components/components.module';
 import {LandingModule} from './pages/landing/landing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
+import {DashboardModule} from './pages/dashboard/dashboard.module';
+import {NbThemeModule} from '@nebular/theme';
+import {DashboardComponentsModule} from './dashboard-components/dashboard-components.module';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -17,8 +21,12 @@ import {HttpClientModule} from '@angular/common/http';
     AppRoutingModule,
     ComponentsModule,
     LandingModule,
+    NbThemeModule.forRoot({ name: 'default' }),
+    DashboardModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    DashboardComponentsModule,
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

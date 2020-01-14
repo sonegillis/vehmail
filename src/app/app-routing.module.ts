@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {LandingComponent} from './pages/landing/landing.component';
+import {DashboardComponent} from './pages/dashboard/dashboard.component';
 
 const routes: Routes = [
-  { path: '', component: LandingComponent, pathMatch: 'full' }
+  { path: '', component: LandingComponent, pathMatch: 'full' },
+  { path: 'dashboard', component: DashboardComponent }
 ];
 
 @NgModule({
