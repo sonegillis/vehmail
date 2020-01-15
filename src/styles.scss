@@ -1300,8 +1300,8 @@ p {
   color: var(--primary-color);
 }
 
-.bg-primary {
-  background: linear-gradient(45deg, var(--primary-color) 0%, rgba(106, 198, 240, 1) 100%);
+.bg-primary-gradient {
+  background: linear-gradient(90deg, var(--gradient-color1), var(--gradient-color2) 45%, var(--gradient-color2) 55%);
 }
 
 .logo-big {

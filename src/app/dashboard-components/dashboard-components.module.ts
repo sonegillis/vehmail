@@ -6,6 +6,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {NgbPopoverModule} from '@ng-bootstrap/ng-bootstrap';
 import {RouterModule} from '@angular/router';
 import { LeftSidenavComponent } from './left-sidenav/left-sidenav.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [DashHeaderComponent, LeftSidenavComponent],
@@ -19,6 +20,7 @@ import { LeftSidenavComponent } from './left-sidenav/left-sidenav.component';
     MatIconModule,
     NgbPopoverModule,
     RouterModule,
+    FormsModule,
     NbMenuModule.forRoot(),
     NbCardModule
   ]

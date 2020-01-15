@@ -1,4 +1,18 @@
 :host {
   --primary-color: rgba(57, 148, 156, 1);
   --auth-background-color: #fff;
+
+  --gradient-color1: #1A88AC;
+  --gradient-color2: #0546A5;
+  --gradient-color3: #136279;
+  --highlight: #18747B;
+  --compose-btn-color: #1d92ae;
+  --segment-border-color: rgba(29, 146, 174, 0.64);
+  --segment-bgcolor: rgba(29, 146, 174, 0.32);
+  --segment-hover-color: rgba(29, 146, 174, 0.08);
+  --folder-actived-bg-color: rgba(29, 146, 174, 0.32);
+  --folder-hovered-bg-color: rgba(29, 146, 174, 0.16);
+  --folder-actived-border: 2px solid #1d92ae;
+  --item-selected-bgcolor: rgba(29, 146, 174, 0.32);
+  --item-hovered-bgcolor: rgba(29, 146, 174, 0.16);
 }

@@ -46,18 +46,22 @@ export class LeftSidenavComponent implements OnInit {
         {
           title: 'Drafts',
           link: [],
+          icon: 'edit'
         },
         {
           title: 'Sent Items',
           link: [],
+          icon: 'paper-plane'
         },
         {
           title: 'Deleted Items',
           link: [],
+          icon: 'trash'
         },
         {
           title: 'Archive',
           link: [],
+          icon: 'archive'
         },
       ],
     },

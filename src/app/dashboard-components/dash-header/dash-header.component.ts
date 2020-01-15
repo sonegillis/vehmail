@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dash-header.component.scss']
 })
 export class DashHeaderComponent implements OnInit {
-
+  searchData: string;
   constructor() { }
 
   ngOnInit() {
