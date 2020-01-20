@@ -71,19 +71,23 @@
   padding: 12px 0;
   background: #fff;
   font-size: 1.3em;
+
   &:focus {
     outline: 0;
   }
+
   &:hover {
     background: var(--gradient-color2);
     color: #fff;
   }
+
 }
 
 .input-search-wrapper {
   height: 50px;
   display: flex;
   align-items: center;
+
   input {
     height: 100%;
     padding: 6px 16px;

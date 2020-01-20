@@ -70,6 +70,17 @@ export class LeftSidenavComponent implements OnInit {
       children: [
       ],
     },
+    {
+      title: 'Domains',
+      link: [],
+      icon: 'options-2-outline',
+      children: [
+        {
+          title: 'itdesign.com',
+          link: []
+        }
+      ]
+    },
   ];
   constructor() { }
 
