@@ -1313,6 +1313,14 @@ p {
   background: linear-gradient(90deg, var(--gradient-color1), var(--gradient-color2) 45%, var(--gradient-color2) 55%);
 }
 
+.bg-secondary-gradient {
+  background: linear-gradient(115deg, var(--gradient-color3), var(--gradient-color3) 45%, var(--gradient-color4) 55%);
+}
+
+.bg-tertiary-gradient {
+  background: linear-gradient(-115deg, var(--gradient-color5), var(--gradient-color5) 45%, var(--gradient-color6) 55%);
+}
+
 .logo-big {
   color: #fff !important;
   font-weight: bold !important;
@@ -1335,6 +1343,27 @@ p {
 }
 .popover-body {
   padding: 0 !important;
+}
+
+.nb-theme-default nb-menu .menu-item {
+  a, .menu-icon {
+    color: #fff !important;
+  }
+}
+
+.table tr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  padding: 12px;
+}
+
+.table td, .table th {
+  height: 24px;
+  padding: 0px;
+  border-top: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 
