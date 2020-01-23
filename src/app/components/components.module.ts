@@ -6,6 +6,7 @@ import { ButtonSegmentsComponent } from './button-segments/button-segments.compo
 import {MatIconModule} from '@angular/material/icon';
 import {DropdownModule} from 'primeng/dropdown';
 import {FormsModule} from '@angular/forms';
+import {NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [HeaderComponent, AuthComponent, ButtonSegmentsComponent],
@@ -13,7 +14,8 @@ import {FormsModule} from '@angular/forms';
     CommonModule,
     MatIconModule,
     DropdownModule,
-    FormsModule
+    FormsModule,
+    NgbAlertModule
   ],
   exports: [HeaderComponent, AuthComponent, ButtonSegmentsComponent]
 })

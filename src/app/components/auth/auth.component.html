@@ -12,8 +12,9 @@
         <p [ngClass]="signupLevel === 2 ? 'active' : 'not-active'">2</p>
         <p [ngClass]="signupLevel === 3 ? 'active' : 'not-active'" class="ml-1">3</p>
       </div>
+      <ngb-alert *ngIf="signUpError" type="danger" (close)="signUpError = false">{{ signUpErrorText }}</ngb-alert>
       <div class="h-100 w-100 d-flex flex-column">
-        <form #signupLevelOne="ngForm" *ngIf="signupLevel === 1" class="animated fadeIn" (ngSubmit)="nextSignupPage()">
+        <form #signupLevelOne="ngForm" *ngIf="signupLevel === 1" class="animated fadeIn" (ngSubmit)="nextSignupPage()" (submit)="$event.preventDefault()">
           <label>
             First Name
             <div class="w-100 my-input">
@@ -48,7 +49,7 @@
           <label>
             City
             <div class="w-100 my-input">
-              <mat-icon aria-hidden="false" aria-label="Example home icon">apartment</mat-icon>
+              <mat-icon aria-hidden="false" aria-label="Example home icon">house</mat-icon>
               <input #city="ngModel" class="w-100" type="text" placeholder="City" name="city" [(ngModel)]="signupData.city" required="">
             </div>
             <div *ngIf="city.invalid && city.dirty">
@@ -70,7 +71,7 @@
             <div class="w-100 my-input">
               <mat-icon aria-hidden="false" aria-label="Example home icon">call</mat-icon>
               <span>{{dialingCode}}</span>
-              <input #phoneNumber="ngModel" name="phoneNumber" [(ngModel)]="signupData.phone" class="w-100" type="number" placeholder="Phone number" required>
+              <input #phoneNumber="ngModel" name="phoneNumber" [(ngModel)]="phone" class="w-100" type="number" placeholder="Phone number" required>
             </div>
             <div *ngIf="phoneNumber.invalid && phoneNumber.dirty">
               <small *ngIf="phoneNumber.errors.required" class="float-right validation-error">*This field is required</small>
@@ -82,11 +83,11 @@
             </button>
           </div>
         </form>
-        <form #signupLevelTwo="ngForm" *ngIf="signupLevel === 2" class="animated fadeIn">
+        <form #signupLevelTwo="ngForm" *ngIf="signupLevel === 2" class="animated fadeIn" (submit)="$event.preventDefault()">
           <label>
             Username
             <div class="w-100 my-input">
-              <mat-icon aria-hidden="false" aria-label="Example home icon">call</mat-icon>
+              <mat-icon aria-hidden="false" aria-label="Example home icon">person</mat-icon>
               <input #username="ngModel" name="username" [(ngModel)]="signupData.username" class="w-100" type="text" placeholder="Username" required>
               <span>@vehmail.com</span>
             </div>
@@ -98,7 +99,7 @@
             Password
             <div class="w-100 my-input">
               <mat-icon aria-hidden="false" aria-label="Example home icon">lock</mat-icon>
-              <input #password="ngModel" name="password" [(ngModel)]="password" class="w-100" [type]="passwordType" placeholder="Password" required>
+              <input #password="ngModel" name="password" [(ngModel)]="passwordText" class="w-100" [type]="passwordType" placeholder="Password" required>
               <mat-icon (click)="passwordType = 'text'" *ngIf="passwordType === 'password'" aria-hidden="false" aria-label="Example home icon">visibility_off</mat-icon>
               <mat-icon (click)="passwordType = 'password'" *ngIf="passwordType === 'text'" aria-hidden="false" aria-label="Example home icon">visibility</mat-icon>
             </div>
@@ -110,14 +111,14 @@
             Confirm Password
             <div class="w-100 my-input">
               <mat-icon aria-hidden="false" aria-label="Example home icon">lock</mat-icon>
-              <input #confirmPassword="ngModel" class="w-100" [type]="confirmPasswordType" placeholder="Confirm Password" [(ngModel)]="confirmPassword" name="confirmPassword" required>
+              <input #confirmPassword="ngModel" class="w-100" [type]="confirmPasswordType" placeholder="Confirm Password" [(ngModel)]="confirmPasswordText" name="confirmPassword" required>
               <mat-icon (click)="confirmPasswordType = 'text'" *ngIf="confirmPasswordType === 'password'" aria-hidden="false" aria-label="Example home icon">visibility_off</mat-icon>
               <mat-icon (click)="confirmPasswordType = 'password'" *ngIf="confirmPasswordType === 'text'" aria-hidden="false" aria-label="Example home icon">visibility</mat-icon>
             </div>
             <div *ngIf="confirmPassword.invalid && confirmPassword.dirty">
               <small (="confirmPassword.errors.required" class="float-right validation-error">*This field is required</small>
               <br>
-              <small *ngIf="password !== confirmPassword" class="float-right validation-error">*Passwords must match</small>
+              <small *ngIf="passwordText !== confirmPasswordText" class="float-right validation-error">*Passwords must match</small>
             </div>
           </label>
           <div class="w-100 d-flex justify-content-between">
@@ -125,12 +126,12 @@
               <mat-icon aria-hidden="false" aria-label="Example home icon">arrow_backward</mat-icon>
               <span>BACK</span>
             </button>
-            <button [disabled]="!signupLevelTwo.valid || password !== confirmPassword" (click)="nextSignupPage()" class="my-btn w-45 d-flex align-items-center justify-content-center">
+            <button [disabled]="!signupLevelTwo.valid || passwordText !== confirmPasswordText" (click)="nextSignupPage()" class="my-btn w-45 d-flex align-items-center justify-content-center">
               <span>NEXT</span><mat-icon aria-hidden="false" aria-label="Example home icon">arrow_forward</mat-icon>
             </button>
           </div>
         </form>
-        <form #ngForm *ngIf="signupLevel === 3" class="animated fadeIn">
+        <form #ngForm *ngIf="signupLevel === 3" class="animated fadeIn" (submit)="$event.preventDefault()">
           <p>We have sent an SMS verfication code to
             <span class="text-color-primary font-weight-bold">
               {{dialingCode}} {{phone}}
@@ -167,17 +168,37 @@
 <!-- Login -->
 <ng-template #login>
   <h1 class="mt-4"> Log In </h1>
+  <ngb-alert *ngIf="accountCreated" type="info" (close)="accountCreated = false">Your account was successfully created. Log In Below</ngb-alert>
+  <ngb-alert *ngIf="signInError" type="danger" (close)="signInError = false">{{ signInErrorText }}</ngb-alert>
   <div class="h-100 d-flex flex-column w-100">
-    <form #ngForm class="w-100">
-      <div class="w-100 mb-2 position-relative">
-        <input class="my-input input-username w-100" type="text" placeholder="Username">
-        <p class="position-absolute input-completion">@vehmail.com</p>
-      </div>
-      <div class="w-100 mb-2">
-        <input class="my-input w-100" type="password" placeholder="password">
-      </div>
-      <div class="w-100">
-        <button class="my-input my-btn w-50 float-right" type="submit">Login</button>
+    <form #ngForm class="w-100" >
+      <label>
+        Email
+        <div class="w-100 my-input">
+          <mat-icon aria-hidden="false" aria-label="Example home icon">person</mat-icon>
+          <input #username="ngModel" name="username" [(ngModel)]="signInData.username" class="w-100" type="text" placeholder="Username" required>
+          <span>@vehmail.com</span>
+        </div>
+        <div *ngIf="username.invalid && username.dirty">
+          <small *ngIf="username.errors.required" class="float-right validation-error">*This field is required</small>
+        </div>
+      </label>
+      <label>
+        Password
+        <div class="w-100 my-input">
+          <mat-icon aria-hidden="false" aria-label="Example home icon">lock</mat-icon>
+          <input #password="ngModel" name="password" [(ngModel)]="signInData.password" class="w-100" [type]="passwordType" placeholder="Password" required>
+          <mat-icon (click)="passwordType = 'text'" *ngIf="passwordType === 'password'" aria-hidden="false" aria-label="Example home icon">visibility_off</mat-icon>
+          <mat-icon (click)="passwordType = 'password'" *ngIf="passwordType === 'text'" aria-hidden="false" aria-label="Example home icon">visibility</mat-icon>
+        </div>
+        <div *ngIf="password.invalid && password.dirty">
+          <small *ngIf="password.errors.required" class="float-right validation-error">*This field is required</small>
+        </div>
+      </label>
+      <div class="w-100 d-flex">
+        <button (click)="signIn()" class="my-btn w-48 align-self-end" type="submit">
+          <span>LOGIN</span>
+        </button>
       </div>
     </form>
   </div>

@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {UsermanagerService} from '../../services/usermanager/usermanager.service';
 import countries from '../../../assets/json/countries.json';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-auth',
@@ -28,14 +29,25 @@ export class AuthComponent implements OnInit {
     address: '',
     code: ''
   };
+
+  signInData = {
+    username: '',
+    password: ''
+  };
+
   loaderMessage: string;
   verificationCode: string;
-  password: string;
-  confirmPassword: string;
+  passwordText: string;
+  confirmPasswordText: string;
   dialingCode: string;
   phone: string;
+  accountCreated = false;
+  signUpError = false;
+  signInError = false;
+  signUpErrorText: string;
+  signInErrorText: string;
 
-  constructor(private userManager: UsermanagerService) {
+  constructor(private userManager: UsermanagerService, private router: Router) {
 
   }
 
@@ -74,14 +86,45 @@ export class AuthComponent implements OnInit {
   }
 
   createAccount() {
-    this.signupData.code = 'V-' + this.verificationCode;
+    this.isLoading = true;
+    this.loaderMessage = 'Please be Patient while we create your account';
+    this.signupData.code = this.verificationCode;
     this.signupData.phone = this.dialingCode + this.phone;
-    this.signupData.password = this.password;
+    this.signupData.password = this.passwordText;
+    this.signupData.country = this.countries.find(item => {
+      return item.dialling_code === this.dialingCode;
+    }).country_name;
     console.log(this.signupData);
+    this.userManager.signUp(this.signupData).then(response => {
+      this.isLoading = false;
+      console.log('account sucessfully created');
+      this.accountCreated = true;
+      this.authType = '2';
+    }, error => {
+      this.isLoading = false;
+      console.log(error);
+      this.signUpError = true;
+      this.signUpErrorText = error;
+    });
   }
 
   editPhoneNumber() {
     this.signupLevel = 1;
     this.phoneNumber.focus();
+  }
+
+  signIn() {
+    this.isLoading = true;
+    this.loaderMessage = 'Signing you In';
+    this.userManager.login(this.signInData).then(response => {
+      this.isLoading = false;
+      console.log('login succesfull');
+      this.router.navigate(['/dashboard']);
+    }, error => {
+      this.isLoading = false;
+      console.log(error);
+      this.signInError = true;
+      this.signInErrorText = error;
+    });
   }
 }

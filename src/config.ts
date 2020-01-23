@@ -5,7 +5,9 @@ export let GATEWAY = {
 
 export let SERVICEURLS = {
   getGeoInformation: GATEWAY.GEO_IP + '/ipgeo?',
-  verifyPhone: GATEWAY.SERVER_IP + 'api/account/verify-phone/'
+  verifyPhone: GATEWAY.SERVER_IP + 'api/account/verify-phone/',
+  signUp: GATEWAY.SERVER_IP + 'api/account/signup/',
+  login: GATEWAY.SERVER_IP + 'api/account/login/'
 };
 
 export let TOKEN = {

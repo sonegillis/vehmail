@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {SERVICEURLS, TOKEN} from '../../../config';
 import {Toolkits} from '../../utils';
+import {error} from "util";
 
 @Injectable({
   providedIn: 'root'
@@ -62,12 +63,45 @@ export class UsermanagerService {
       this.http.get(url).subscribe(response => {
         const result = response as any;
         const {status} = result;
+        const {status_text} = result;
         if (status === 200) {
           resolve();
         } else {
-          reject();
+          reject(status_text);
         }
-      }, error => reject());
+      }, _ => reject('Error connecting to server'));
+    });
+  }
+
+  signUp(data: any) {
+    return new Promise((resolve, reject) => {
+      const url = `${SERVICEURLS.signUp}`;
+      this.http.post(url, data).subscribe(response => {
+        const result = response as any;
+        const {status} = result;
+        const {status_text} = result;
+        if (status === 200) {
+          resolve();
+        } else {
+          reject(status_text);
+        }
+      }, _ => reject('Error connecting to server'));
+    });
+  }
+
+  login(data: any) {
+    return new Promise((resolve, reject) => {
+      const url = `${SERVICEURLS.login}`;
+      this.http.post(url, data).subscribe(response => {
+        const result = response as any;
+        const {status} = result;
+        const {status_text} = result;
+        if (status === 200) {
+          resolve();
+        } else {
+          reject(status_text);
+        }
+      }, _ => reject('Error connecting to server'));
     });
   }
 }
