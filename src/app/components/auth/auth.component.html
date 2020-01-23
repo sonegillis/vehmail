@@ -18,7 +18,7 @@
             First Name
             <div class="w-100 my-input">
               <mat-icon aria-hidden="false" aria-label="Example home icon">person</mat-icon>
-              <input #firstName="ngModel" name="firstName" [(ngModel)]="signupData.firstName" class="w-100" type="text" placeholder="First Name"  required>
+              <input #firstName="ngModel" name="firstName" [(ngModel)]="signupData.first_name" class="w-100" type="text" placeholder="First Name" required>
             </div>
             <div *ngIf="firstName.invalid && firstName.dirty">
               <small *ngIf="firstName.errors.required" class="float-right validation-error">*This field is required</small>
@@ -28,7 +28,7 @@
             Last Name
             <div class="w-100 my-input">
               <mat-icon aria-hidden="false" aria-label="Example home icon">person</mat-icon>
-              <input #lastName="ngModel" name="lastName" [(ngModel)]="signupData.lastName" class="w-100" type="text" placeholder="Last Name" required>
+              <input #lastName="ngModel" name="lastName" [(ngModel)]="signupData.last_name" class="w-100" type="text" placeholder="Last Name" required>
             </div>
             <div *ngIf="lastName.invalid && lastName.dirty">
               <small *ngIf="lastName.errors.required" class="float-right validation-error">*This field is required</small>
@@ -37,7 +37,7 @@
           <label>
             <div class="w-100 my-input">
               <mat-icon aria-hidden="false" aria-label="Example home icon">flag</mat-icon>
-              <select #country="ngModel" name="country" class="w-100" [(ngModel)]="signupData.diallingCode" (change)="signupData.city = ''" required>
+              <select #country="ngModel" name="country" class="w-100" [(ngModel)]="dialingCode" (change)="signupData.city = ''" required>
                 <option *ngFor="let country of countries" [value]="country.dialling_code">{{country.country_name}}</option>
               </select>
             </div>
@@ -69,8 +69,8 @@
             Phone number
             <div class="w-100 my-input">
               <mat-icon aria-hidden="false" aria-label="Example home icon">call</mat-icon>
-              <span>{{signupData.diallingCode}}</span>
-              <input #phoneNumber="ngModel" name="phoneNumber" [(ngModel)]="signupData.phoneNumber" class="w-100" type="number" placeholder="Phone number" required>
+              <span>{{dialingCode}}</span>
+              <input #phoneNumber="ngModel" name="phoneNumber" [(ngModel)]="signupData.phone" class="w-100" type="number" placeholder="Phone number" required>
             </div>
             <div *ngIf="phoneNumber.invalid && phoneNumber.dirty">
               <small *ngIf="phoneNumber.errors.required" class="float-right validation-error">*This field is required</small>
@@ -98,7 +98,7 @@
             Password
             <div class="w-100 my-input">
               <mat-icon aria-hidden="false" aria-label="Example home icon">lock</mat-icon>
-              <input #password="ngModel" name="password" [(ngModel)]="signupData.password" class="w-100" [type]="passwordType" placeholder="Password" required>
+              <input #password="ngModel" name="password" [(ngModel)]="password" class="w-100" [type]="passwordType" placeholder="Password" required>
               <mat-icon (click)="passwordType = 'text'" *ngIf="passwordType === 'password'" aria-hidden="false" aria-label="Example home icon">visibility_off</mat-icon>
               <mat-icon (click)="passwordType = 'password'" *ngIf="passwordType === 'text'" aria-hidden="false" aria-label="Example home icon">visibility</mat-icon>
             </div>
@@ -110,14 +110,14 @@
             Confirm Password
             <div class="w-100 my-input">
               <mat-icon aria-hidden="false" aria-label="Example home icon">lock</mat-icon>
-              <input #confirmPassword="ngModel" class="w-100" [type]="confirmPasswordType" placeholder="Confirm Password" [(ngModel)]="signupData.confirmPassword" name="confirmPassword" required>
+              <input #confirmPassword="ngModel" class="w-100" [type]="confirmPasswordType" placeholder="Confirm Password" [(ngModel)]="confirmPassword" name="confirmPassword" required>
               <mat-icon (click)="confirmPasswordType = 'text'" *ngIf="confirmPasswordType === 'password'" aria-hidden="false" aria-label="Example home icon">visibility_off</mat-icon>
               <mat-icon (click)="confirmPasswordType = 'password'" *ngIf="confirmPasswordType === 'text'" aria-hidden="false" aria-label="Example home icon">visibility</mat-icon>
             </div>
             <div *ngIf="confirmPassword.invalid && confirmPassword.dirty">
               <small (="confirmPassword.errors.required" class="float-right validation-error">*This field is required</small>
               <br>
-              <small *ngIf="signupData.password !== signupData.confirmPassword" class="float-right validation-error">*Passwords must match</small>
+              <small *ngIf="password !== confirmPassword" class="float-right validation-error">*Passwords must match</small>
             </div>
           </label>
           <div class="w-100 d-flex justify-content-between">
@@ -125,7 +125,7 @@
               <mat-icon aria-hidden="false" aria-label="Example home icon">arrow_backward</mat-icon>
               <span>BACK</span>
             </button>
-            <button [disabled]="!signupLevelTwo.valid || signupData.password != signupData.confirmPassword" (click)="nextSignupPage()" class="my-btn w-45 d-flex align-items-center justify-content-center">
+            <button [disabled]="!signupLevelTwo.valid || password !== confirmPassword" (click)="nextSignupPage()" class="my-btn w-45 d-flex align-items-center justify-content-center">
               <span>NEXT</span><mat-icon aria-hidden="false" aria-label="Example home icon">arrow_forward</mat-icon>
             </button>
           </div>
@@ -133,7 +133,7 @@
         <form #ngForm *ngIf="signupLevel === 3" class="animated fadeIn">
           <p>We have sent an SMS verfication code to
             <span class="text-color-primary font-weight-bold">
-              {{signupData.diallingCode}} {{signupData.phoneNumber}}
+              {{dialingCode}} {{phone}}
               <mat-icon (click)="editPhoneNumber()" class="cursor-pointer" aria-hidden="false" aria-label="Example home icon">edit</mat-icon>
             </span>
           </p>
@@ -141,9 +141,9 @@
             Confirmation Code
             <div class="w-100 my-input">
               <span>V-</span>
-              <input #confirmationCode="ngModel" class="w-100" [type]="confirmationCode" placeholder="Confirmation Code" [(ngModel)]="signupData.verficationCode" name="confirmPassword" required>
+              <input #confirmationCode="ngModel" class="w-100" [type]="confirmationCode" placeholder="Confirmation Code" [(ngModel)]="verificationCode" name="confirmPassword" required>
             </div>
-            <p *ngIf="insertVerificationCode" (click)="verityPhone()" class="text-color-primary cursor-pointer ml-2 w-50 align-self-end">Resend SMS?</p>
+<!--            <p *ngIf="insertVerificationCode" (click)="verityPhone()" class="text-color-primary cursor-pointer ml-2 w-50 align-self-end">Resend SMS?</p>-->
           </label>
           <div class="w-100 d-flex justify-content-between">
             <button (click)="prevSignupPage()" class="my-btn w-48 d-flex align-items-center justify-content-center">

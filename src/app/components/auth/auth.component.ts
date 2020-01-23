@@ -18,19 +18,22 @@ export class AuthComponent implements OnInit {
   confirmPasswordType = 'password';
   isLoading = false;
   signupData = {
-    firstName: '',
-    lastName: '',
+    first_name: '',
+    last_name: '',
     country: '',
     city: '',
-    phoneNumber: '',
+    phone: '',
     username: '',
     password: '',
-    confirmPassword: '',
-    diallingCode: '',
-    verficationCode: '',
-    address: ''
+    address: '',
+    code: ''
   };
   loaderMessage: string;
+  verificationCode: string;
+  password: string;
+  confirmPassword: string;
+  dialingCode: string;
+  phone: string;
 
   constructor(private userManager: UsermanagerService) {
 
@@ -39,7 +42,7 @@ export class AuthComponent implements OnInit {
   ngOnInit() {
     this.signupData.city = this.userManager.userGeoInfo.city;
     this.signupData.country = this.userManager.userGeoInfo.country_name;
-    this.signupData.diallingCode = this.userManager.userGeoInfo.calling_code;
+    this.dialingCode = this.userManager.userGeoInfo.calling_code;
   }
 
   nextSignupPage() {
@@ -48,7 +51,7 @@ export class AuthComponent implements OnInit {
     } else if (this.signupLevel === 2) {
       this.loaderMessage = 'Please be patient while we send you an SMS verification code';
       this.isLoading = true;
-      this.userManager.verifyPhone(this.signupData.diallingCode + this.signupData.phoneNumber).then(result => {
+      this.userManager.verifyPhone(this.dialingCode + this.phone).then(result => {
         console.log(result);
         this.isLoading = false;
         this.signupLevel = 3;
@@ -71,7 +74,10 @@ export class AuthComponent implements OnInit {
   }
 
   createAccount() {
-
+    this.signupData.code = 'V-' + this.verificationCode;
+    this.signupData.phone = this.dialingCode + this.phone;
+    this.signupData.password = this.password;
+    console.log(this.signupData);
   }
 
   editPhoneNumber() {
