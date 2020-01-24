@@ -1,7 +1,8 @@
-import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Inject, OnInit, Output, ViewChild} from '@angular/core';
 import {UsermanagerService} from '../../services/usermanager/usermanager.service';
 import countries from '../../../assets/json/countries.json';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
+import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 
 @Component({
   selector: 'app-auth',
@@ -47,7 +48,9 @@ export class AuthComponent implements OnInit {
   signUpErrorText: string;
   signInErrorText: string;
 
-  constructor(private userManager: UsermanagerService, private router: Router) {
+  constructor(private userManager: UsermanagerService,
+              private router: Router,
+              @Inject(LOCAL_STORAGE) private storage: WebStorageService) {
 
   }
 
