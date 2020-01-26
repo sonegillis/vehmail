@@ -9,15 +9,20 @@ import { LeftSidenavComponent } from './left-sidenav/left-sidenav.component';
 import {FormsModule} from '@angular/forms';
 import { MailListComponent } from './mail-list/mail-list.component';
 import { MailFilterComponent } from './mail-filter/mail-filter.component';
-import {MatPaginatorModule, MatTableModule} from '@angular/material';
+import {MatInputModule, MatPaginatorModule, MatTableModule} from '@angular/material';
 import {NglCheckboxesModule} from 'ng-lightning';
+import { ComposeMailComponent } from './compose-mail/compose-mail.component';
+import { FooterComponent } from './footer/footer.component';
+import {EditorModule} from '@tinymce/tinymce-angular';
 
 @NgModule({
-  declarations: [DashHeaderComponent, LeftSidenavComponent, MailListComponent, MailFilterComponent],
+  declarations: [DashHeaderComponent, LeftSidenavComponent, MailListComponent, MailFilterComponent, ComposeMailComponent, FooterComponent],
   exports: [
     DashHeaderComponent,
     LeftSidenavComponent,
-    MailListComponent
+    MailListComponent,
+    FooterComponent,
+    ComposeMailComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +35,9 @@ import {NglCheckboxesModule} from 'ng-lightning';
     FormsModule,
     MatTableModule,
     NbMenuModule.forRoot(),
-    NbCardModule
+    NbCardModule,
+    EditorModule,
+    MatInputModule
   ]
 })
 export class DashboardComponentsModule { }

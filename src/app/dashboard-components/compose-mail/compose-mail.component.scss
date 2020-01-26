@@ -1,0 +1,31 @@
+.mail-editor {
+  position: fixed;
+  right: 1%;
+  bottom: 2%;
+  height: 700px;
+  width: 700px;
+  background: #fff;
+  z-index: 5;
+  border-top-right-radius: 12px;
+  border-top-left-radius: 12px;
+  border: 1px solid var(--gradient-color1);
+  color: #fff;
+
+  .action-bar {
+    height: 50px;
+    background: var(--gradient-color1);
+    display: flex;
+    align-items: center;
+    color: #fff;
+    justify-content: space-between;
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
+    border: 1px solid var(--gradient-color1);
+
+    .minimize:hover, .close:hover {
+      transform: scale(1.2);
+      font-weight: bold;
+    }
+  }
+
+}

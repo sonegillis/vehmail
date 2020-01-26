@@ -176,8 +176,7 @@
         Email
         <div class="w-100 my-input">
           <mat-icon aria-hidden="false" aria-label="Example home icon">person</mat-icon>
-          <input #username="ngModel" name="username" [(ngModel)]="signInData.username" class="w-100" type="text" placeholder="Username" required>
-          <span>@vehmail.com</span>
+          <input #username="ngModel" name="username" [(ngModel)]="signInData.username" class="w-100" type="text" placeholder="e.g mail@vehmail.com" required>
         </div>
         <div *ngIf="username.invalid && username.dirty">
           <small *ngIf="username.errors.required" class="float-right validation-error">*This field is required</small>

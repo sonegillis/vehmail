@@ -1,3 +1,26 @@
 .nb-theme-default nb-layout .layout .layout-container .content.center {
   flex: 2 !important;
 }
+
+.compose {
+  background: rgba(0, 0, 0, 0.7);
+  width: 56px;
+  height: 56px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  right: 2%;
+  bottom: 2%;
+  border-radius: 50%;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.5);
+  }
+}
+
+.main-content {
+  padding-bottom: 48px;
+  margin-bottom: 100px;
+  height: 100vh;
+}

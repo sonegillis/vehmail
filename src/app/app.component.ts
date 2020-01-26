@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import * as AOS from 'aos';
 import {UsermanagerService} from './services/usermanager/usermanager.service';
-import {error} from "util";
+import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
+import {HttpService} from './services/http/http.service';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +11,13 @@ import {error} from "util";
 })
 export class AppComponent implements OnInit {
   title = 'vehmail';
-  constructor(private userManager: UsermanagerService) {}
+  constructor(private userManager: UsermanagerService,
+              private httpService: HttpService,
+              @Inject(LOCAL_STORAGE) private storage: WebStorageService) {}
   ngOnInit() {
     AOS.init();
+    this.userManager.user = this.storage.get('user');
+    this.httpService.token = this.storage.get('token');
     this.initUserGeo();
   }
 

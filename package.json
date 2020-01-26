@@ -25,6 +25,7 @@
     "@nebular/theme": "^4.6.0",
     "@ng-bootstrap/ng-bootstrap": "^5.1.5",
     "@salesforce-ux/design-system": "^2.10.2",
+    "@tinymce/tinymce-angular": "^3.3.1",
     "angular-webstorage-service": "^1.0.2",
     "animate.css": "^3.7.2",
     "aos": "^2.3.4",

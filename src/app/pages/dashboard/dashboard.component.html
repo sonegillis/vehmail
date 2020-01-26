@@ -1,13 +1,19 @@
 <nb-layout center>
-  <nb-layout-header class="bg-primary-gradient">
-    <app-dash-header class="w-100"></app-dash-header>
+  <nb-layout-header class="bg-primary-gradient" [fixed]="true">
+    <app-dash-header [user]="userManager.user" class="w-100"></app-dash-header>
   </nb-layout-header>
-  <nb-sidebar class="bg-secondary-gradient text-white" [left]="true" [responsive]="true" tag="left" >
+  <nb-sidebar class="bg-secondary-gradient text-white" [left]="true" [responsive]="true" tag="left">
     <app-left-sidenav></app-left-sidenav>
   </nb-sidebar>
-  <nb-layout-column class="bg-tertiary-gradient">
-    <app-mail-list></app-mail-list>
+  <nb-layout-column class="bg-tertiary-gradient main-content">
+    <app-mail-list [mails]="userManager.inbox"></app-mail-list>
+    <app-footer></app-footer>
   </nb-layout-column>
-  <nb-sidebar [right]="true" [responsive]="true" tag="right">right</nb-sidebar>
-<!--  <nb-layout-footer>Contact us</nb-layout-footer>-->
+  <nb-sidebar class="bg-secondary-gradient" [right]="true" [responsive]="true" tag="right">right</nb-sidebar>
 </nb-layout>
+
+<div class="compose cursor-pointer">
+  <mat-icon (click)="openMailEditor()" aria-hidden="false" aria-label="Example edit icon" class="text-white">edit</mat-icon>
+</div>
+
+<app-compose-mail *ngIf="openEditor"></app-compose-mail>

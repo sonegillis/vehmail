@@ -3,6 +3,7 @@ import {UsermanagerService} from '../../services/usermanager/usermanager.service
 import countries from '../../../assets/json/countries.json';
 import {Router} from '@angular/router';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
+import {HttpService} from '../../services/http/http.service';
 
 @Component({
   selector: 'app-auth',
@@ -49,8 +50,7 @@ export class AuthComponent implements OnInit {
   signInErrorText: string;
 
   constructor(private userManager: UsermanagerService,
-              private router: Router,
-              @Inject(LOCAL_STORAGE) private storage: WebStorageService) {
+              private router: Router) {
 
   }
 

@@ -1,14 +1,30 @@
 .mails {
-  tr td:nth-of-type(1) {
+  height: 85vh;
+  overflow-y: scroll;
+}
+
+.mail {
+  padding: 6px;
+  border-bottom: 1px solid var(--gradient-color4);
+  cursor: pointer;
+  p {
+    color: #fff;
+    font-size: 0.95em;
+  }
+  p:nth-of-type(1) {
     width: 15%;
   }
-  tr td:nth-of-type(2) {
+  p:nth-of-type(2) {
     width: 25%;
   }
-  tr td:nth-of-type(3) {
+  p:nth-of-type(3) {
     width: 45%;
   }
-  tr td:nth-of-type(4) {
+  p:nth-of-type(4) {
     width: 15%;
   }
+}
+
+.hovered {
+  background: var(--gradient-color3);
 }

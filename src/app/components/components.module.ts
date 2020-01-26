@@ -7,6 +7,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {DropdownModule} from 'primeng/dropdown';
 import {FormsModule} from '@angular/forms';
 import {NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
+import {StorageServiceModule} from 'angular-webstorage-service';
 
 @NgModule({
   declarations: [HeaderComponent, AuthComponent, ButtonSegmentsComponent],
@@ -15,7 +16,8 @@ import {NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
     MatIconModule,
     DropdownModule,
     FormsModule,
-    NgbAlertModule
+    NgbAlertModule,
+    StorageServiceModule,
   ],
   exports: [HeaderComponent, AuthComponent, ButtonSegmentsComponent]
 })

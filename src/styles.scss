@@ -1318,9 +1318,21 @@ p {
 }
 
 .bg-tertiary-gradient {
-  background: linear-gradient(-115deg, var(--gradient-color5), var(--gradient-color5) 45%, var(--gradient-color6) 55%);
+  background: linear-gradient(45deg, var(--gradient-color5), var(--gradient-color5) 55%, var(--gradient-color5) 45%);
 }
 
+.ellipsis {
+  text-overflow: ellipsis;
+
+  /* Required for text-overflow to do anything */
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.slds-checkbox__label {
+  margin: 0 !important;
+  padding: 0 !important;
+}
 .logo-big {
   color: #fff !important;
   font-weight: bold !important;
@@ -1355,8 +1367,8 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 24px;
-  padding: 12px;
+  height: 36px;
+  padding: 18px;
 }
 
 .table td, .table th {
@@ -1371,5 +1383,5 @@ p {
 }
 
 
-html, body { height: 100%; }
+html, body { height: 100%; margin: 0; overflow: hidden }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

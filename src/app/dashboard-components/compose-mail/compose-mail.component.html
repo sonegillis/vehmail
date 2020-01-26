@@ -1,0 +1,39 @@
+<section class="mail-editor">
+  <div class="action-bar">
+    <p class="pl-2 text-white font-weight-bold">New Message</p>
+    <div>
+      <mat-icon (click)="minimize.emit()" aria-hidden="false" aria-label="Example edit icon" class="text-white mr-2 cursor-pointer minimize">minimize</mat-icon>
+      <mat-icon (click)="destroy.emit()" aria-hidden="false" aria-label="Example edit icon" class="text-white cursor-pointer close">clear</mat-icon>
+    </div>
+  </div>
+  <div class="content p-2">
+    <mat-form-field class="w-100">
+      <input matInput placeholder="To" value="">
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <input matInput placeholder="Bcc" value="">
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <input matInput placeholder="Reply to" value="">
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <input matInput placeholder="Sender name" value="">
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <input matInput placeholder="Subject" value="">
+    </mat-form-field>
+    <p class="font-weight-bold">Message</p>
+    <editor
+      apiKey="{{ tinymceAPI }}"
+      cloudChannel="5"
+      [disabled]="false"
+      id=""
+      [init]="{  }"
+      initialValue=""
+      [inline]="false"
+      plugins=""
+      tagName="div"
+      toolbar=""
+    ></editor>
+  </div>
+</section>

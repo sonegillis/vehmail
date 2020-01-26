@@ -11,7 +11,7 @@
   <div class="default-image-wrapper d-flex text-white align-items-center" placement="bottom-right"
        [ngbPopover]="userInfoPopupContent" [popoverTitle]="userInfoPopupTitle">
     <p class="default-image align-self-end"><mat-icon class="text-white" aria-hidden="false" aria-label="Example home icon">person</mat-icon></p>
-    <span class="pl-2">Sone</span>
+    <span class="pl-2">{{user.first_name}}</span>
   </div>
 </div>
 
@@ -22,13 +22,13 @@
       <mat-icon class="text-white" aria-hidden="false" aria-label="Example home icon">photo_camera</mat-icon>
     </p>
     <div class="d-flex flex-column justify-content-center ml-3">
-      <p class="username">gillis</p>
-      <p class="email">gillis@vehmail.com</p>
+      <p class="username">{{user.username}}</p>
+      <p class="email">{{user.email}}</p>
       <a class="account-info-link" [routerLink]="">Account Info</a>
     </div>
   </div>
 </ng-template>
 
 <ng-template #userInfoPopupContent>
-  <button routerLink="/" class="btn-signout">Sign out</button>
+  <button (click)="signOut()" class="btn-signout">Sign out</button>
 </ng-template>

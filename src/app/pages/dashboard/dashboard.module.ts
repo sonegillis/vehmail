@@ -5,6 +5,9 @@ import {NbEvaIconsModule} from '@nebular/eva-icons';
 import {DashboardComponent} from './dashboard.component';
 import {RouterModule} from '@angular/router';
 import {DashboardComponentsModule} from '../../dashboard-components/dashboard-components.module';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {Interceptor} from '../../interceptor';
+import {MatIconModule} from '@angular/material';
 
 @NgModule({
   declarations: [DashboardComponent],
@@ -14,8 +17,9 @@ import {DashboardComponentsModule} from '../../dashboard-components/dashboard-co
     NbLayoutModule,
     NbSidebarModule,
     DashboardComponentsModule,
-    NbEvaIconsModule
+    NbEvaIconsModule,
+    MatIconModule
   ],
-  providers: [NbSidebarService], // we need this service for the sidebar
+  providers: [NbSidebarService, { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true }], // we need this service for the sidebar
 })
 export class DashboardModule { }
