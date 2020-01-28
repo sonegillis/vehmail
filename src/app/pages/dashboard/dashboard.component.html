@@ -16,4 +16,4 @@
   <mat-icon (click)="openMailEditor()" aria-hidden="false" aria-label="Example edit icon" class="text-white">edit</mat-icon>
 </div>
 
-<app-compose-mail *ngIf="openEditor"></app-compose-mail>
+<app-compose-mail (minimize)="" (destroy)="openEditor=False" *ngIf="openEditor"></app-compose-mail>
