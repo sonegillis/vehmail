@@ -1373,9 +1373,30 @@ p {
 
 .table td, .table th {
   height: 24px;
-  padding: 0px;
+  padding: 0;
   border-top: 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.tox .tox-statusbar {
+  display: none !important;
+}
+
+.tox-tinymce {
+  height: 300px !important;
+  border: 0 !important;
+}
+
+.tox-toolbar__primary {
+  background: none !important;
+}
+
+.tox-menubar {
+  background: none !important;
+}
+
+.tox-toolbar__group {
+  border-right: none !important;
 }
 
 .w-48 {

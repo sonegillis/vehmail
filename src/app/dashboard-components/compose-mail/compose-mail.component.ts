@@ -8,6 +8,7 @@ import {TINYMCE_API_KEY} from '../../../config';
 })
 export class ComposeMailComponent implements OnInit {
   tinymceAPI: string;
+  loadingEditor = true;
 
   @Output() destroy = new EventEmitter();
   @Output() minimize = new EventEmitter();

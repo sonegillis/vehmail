@@ -1,0 +1,29 @@
+.btn-wrapper {
+  background: var(--gradient-color1);
+  cursor: pointer;
+  padding: 8px 0;
+  border: 1px solid var(--gradient-color1);
+  border-radius: 4px;
+  color: white;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.sm {
+  width: 100px;
+}
+
+.md {
+  width: 150px;
+}
+
+.lg {
+  width: 200px;
+}
+
+.primary {
+  background: var(--gradient-color1);
+}
+

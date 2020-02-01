@@ -7,13 +7,13 @@
   </nb-sidebar>
   <nb-layout-column class="bg-tertiary-gradient main-content">
     <app-mail-list [mails]="userManager.inbox"></app-mail-list>
-    <app-footer></app-footer>
+<!--    <app-footer></app-footer>-->
   </nb-layout-column>
   <nb-sidebar class="bg-secondary-gradient" [right]="true" [responsive]="true" tag="right">right</nb-sidebar>
 </nb-layout>
 
-<div class="compose cursor-pointer">
-  <mat-icon (click)="openMailEditor()" aria-hidden="false" aria-label="Example edit icon" class="text-white">edit</mat-icon>
+<div class="compose cursor-pointer" (click)="openMailEditor()">
+  <mat-icon aria-hidden="false" aria-label="Example edit icon" class="text-white">edit</mat-icon>
 </div>
 
-<app-compose-mail (minimize)="" (destroy)="openEditor=False" *ngIf="openEditor"></app-compose-mail>
+<app-compose-mail (minimize)="openEditor=false" (destroy)="openEditor=false" *ngIf="openEditor"></app-compose-mail>

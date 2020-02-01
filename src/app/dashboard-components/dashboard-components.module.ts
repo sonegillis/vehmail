@@ -14,15 +14,17 @@ import {NglCheckboxesModule} from 'ng-lightning';
 import { ComposeMailComponent } from './compose-mail/compose-mail.component';
 import { FooterComponent } from './footer/footer.component';
 import {EditorModule} from '@tinymce/tinymce-angular';
+import { ButtonComponent } from './button/button.component';
 
 @NgModule({
-  declarations: [DashHeaderComponent, LeftSidenavComponent, MailListComponent, MailFilterComponent, ComposeMailComponent, FooterComponent],
+  declarations: [DashHeaderComponent, LeftSidenavComponent, MailListComponent, MailFilterComponent, ComposeMailComponent, FooterComponent, ButtonComponent],
   exports: [
     DashHeaderComponent,
     LeftSidenavComponent,
     MailListComponent,
     FooterComponent,
-    ComposeMailComponent
+    ComposeMailComponent,
+    ButtonComponent
   ],
   imports: [
     CommonModule,

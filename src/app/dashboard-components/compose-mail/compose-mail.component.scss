@@ -2,7 +2,7 @@
   position: fixed;
   right: 1%;
   bottom: 2%;
-  height: 700px;
+  height: 750px;
   width: 700px;
   background: #fff;
   z-index: 5;
@@ -28,4 +28,14 @@
     }
   }
 
+  .footer {
+    position: absolute;
+    bottom: 6px;
+  }
+
+}
+
+.editor-loader {
+  width: 100%;
+  height: 300px;
 }

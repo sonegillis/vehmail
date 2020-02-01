@@ -22,7 +22,8 @@
     <mat-form-field class="w-100">
       <input matInput placeholder="Subject" value="">
     </mat-form-field>
-    <p class="font-weight-bold">Message</p>
+
+    <p *ngIf="loadingEditor" class="editor-loader d-flex justify-content-center align-items-center"><img src="assets/gif/loading-parallel-planets.gif" /></p>
     <editor
       apiKey="{{ tinymceAPI }}"
       cloudChannel="5"
@@ -34,6 +35,11 @@
       plugins=""
       tagName="div"
       toolbar=""
-    ></editor>
+      (onInit)="loadingEditor = false">
+
+    </editor>
+    <div class="d-flex footer">
+      <app-button icon="send" size="sm" text="SEND"></app-button>
+    </div>
   </div>
 </section>
