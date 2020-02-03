@@ -29,6 +29,11 @@ export interface Mail {
   message_id: number;
   was_bcc: boolean;
   hovered?: boolean;
+  replying: boolean;
+  text_plain?: string;
+  text_html?: string;
+  body?: string;
+  attachments: string[];
 }
 
 

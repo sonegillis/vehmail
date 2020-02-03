@@ -26,12 +26,14 @@ export class HttpService {
   }
 
   get(url, params): Observable<any> {
+    console.log('params is ', params);
     const headers = new HttpHeaders();
     // headers.set('Authorization', `Token ${this.token}`);
     let requestParams = '?';
     for (const [key, value] of Object.entries(params))  {
       requestParams += `${key}=${value}&`;
     }
+    console.log('url is ', url);
     url += requestParams;
     return this.http.get(url, {headers});
   }

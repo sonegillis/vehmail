@@ -1,0 +1,4 @@
+<section class="bg-white h-100 w-100 d-flex flex-row justify-content-center align-items-center">
+  <img *ngIf="loadingMail" src="assets/gif/loading-full-snake.gif" />
+  <div class="message" *ngIf="!loadingMail" [innerHTML]="mail.body"></div>
+</section>

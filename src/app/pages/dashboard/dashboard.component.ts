@@ -15,11 +15,7 @@ export class DashboardComponent implements OnInit {
   }
 
   initialiseDashboard() {
-    this.userManager.getMails({type: 'inbox'}).then(_ => {
-      console.log(_);
-    }, _ => {
-      console.log(_);
-    });
+
   }
 
   openMailEditor() {

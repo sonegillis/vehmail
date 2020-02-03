@@ -121,7 +121,7 @@ export class AuthComponent implements OnInit {
     this.loaderMessage = 'Signing you In';
     this.userManager.login(this.signInData).then(response => {
       this.isLoading = false;
-      console.log('login succesfull');
+      console.log('inbox succesfull');
       this.router.navigate(['/dashboard']);
     }, error => {
       this.isLoading = false;

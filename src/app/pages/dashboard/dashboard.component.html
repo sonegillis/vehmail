@@ -6,7 +6,8 @@
     <app-left-sidenav></app-left-sidenav>
   </nb-sidebar>
   <nb-layout-column class="bg-tertiary-gradient main-content">
-    <app-mail-list [mails]="userManager.inbox"></app-mail-list>
+    <router-outlet></router-outlet>
+<!--    <app-mail-list [mails]="userManager.inbox"></app-mail-list>-->
 <!--    <app-footer></app-footer>-->
   </nb-layout-column>
   <nb-sidebar class="bg-secondary-gradient" [right]="true" [responsive]="true" tag="right">right</nb-sidebar>

@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Mail} from '../../models/mail';
+import {SERVICEURLS} from '../../../config';
+import {HttpService} from '../http/http.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +17,22 @@ export class MailmanagerService {
     this._drafts = value;
   }
 
-  constructor() { }
+  constructor(private httpService: HttpService) { }
+
+  getDetailMessage(data: any) {
+    return new Promise((resolve, reject) => {
+      const url = `${SERVICEURLS.getMailDetail}`;
+      this.httpService.get(url, data).subscribe(response => {
+        const result = response as any;
+        const {status} = result;
+        const {status_text} = result;
+        if (status === 200) {
+          resolve(result.data.message);
+        } else {
+          reject(status_text);
+        }
+      }, _ => reject('Error connecting to server'));
+    });
+  }
+
 }
