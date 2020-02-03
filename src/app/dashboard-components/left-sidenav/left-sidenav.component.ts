@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {MailmanagerService} from '../../services/mailmanager/mailmanager.service';
+import {UsermanagerService} from '../../services/usermanager/usermanager.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-left-sidenav',
@@ -6,74 +9,93 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./left-sidenav.component.scss']
 })
 export class LeftSidenavComponent implements OnInit {
+  @Input() inboxCount: number;
+  @Input() active: string;
   items = [
     {
       title: 'Favorites',
       expanded: true,
       icon: 'star',
+      hideContent: false,
       children: [
         {
           title: 'Inbox',
           link: [], // goes into angular `routerLink`,
-          icon: 'inbox'
+          icon: 'inbox',
+          url: '/dashboard/inbox',
+          count: this.inboxCount
         },
         {
           title: 'Sent Items',
           url: '#', // goes directly into `href` attribute
-          icon: 'paper-plane'
+          icon: 'paper-plane',
+          count: 0
         },
         {
           title: 'Drafts',
           link: [],
-          icon: 'edit'
+          icon: 'edit',
+          count: 0
         },
       ],
     },
     {
       title: 'Folders',
       icon: 'folder',
+      hideContent: false,
       children: [
         {
           title: 'Inbox',
           link: [], // goes into angular `routerLink`
-          icon: 'inbox'
+          icon: 'inbox',
+          url: '/dashboard/inbox',
+          count: this.inboxCount
         },
         {
           title: 'Junk Email',
           url: '#', // goes directly into `href` attribute
-          icon: 'slash'
+          icon: 'slash',
+          count: 0
         },
         {
           title: 'Drafts',
           link: [],
-          icon: 'edit'
+          icon: 'edit',
+          count: 0
         },
         {
           title: 'Sent Items',
           link: [],
-          icon: 'paper-plane'
+          icon: 'paper-plane',
+          count: 0
         },
         {
           title: 'Deleted Items',
           link: [],
-          icon: 'trash'
+          icon: 'trash',
+          count: 0
         },
         {
           title: 'Archive',
           link: [],
-          icon: 'archive'
+          icon: 'archive',
+          count: 0
         },
       ],
     },
     {
       title: 'Groups',
+      hideContent: false,
+      icon: 'options-2-outline',
       children: [
       ],
     },
     {
       title: 'Domains',
+      hideContent: false,
       link: [],
       icon: 'options-2-outline',
+      count: 1,
       children: [
         {
           title: 'itdesign.com',
@@ -82,8 +104,15 @@ export class LeftSidenavComponent implements OnInit {
       ]
     },
   ];
-  constructor() { }
+  constructor(private mailManager: MailmanagerService,
+              private router: Router,
+              private userManager: UsermanagerService) { }
 
   ngOnInit() {
+  }
+
+  navigate(url: string) {
+    console.log('url is ', url);
+    this.router.navigateByUrl(url);
   }
 }

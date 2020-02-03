@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashHeaderComponent } from './dash-header/dash-header.component';
-import {NbCardModule, NbLayoutModule, NbMenuModule} from '@nebular/theme';
+import {NbCardModule, NbIconModule, NbLayoutModule, NbMenuModule} from '@nebular/theme';
 import {MatIconModule} from '@angular/material/icon';
 import {NgbPopoverModule} from '@ng-bootstrap/ng-bootstrap';
 import {RouterModule} from '@angular/router';
@@ -15,9 +15,10 @@ import { ComposeMailComponent } from './compose-mail/compose-mail.component';
 import { FooterComponent } from './footer/footer.component';
 import {EditorModule} from '@tinymce/tinymce-angular';
 import { ButtonComponent } from './button/button.component';
+import { SideNavComponent } from './side-nav/side-nav.component';
 
 @NgModule({
-  declarations: [DashHeaderComponent, LeftSidenavComponent, MailListComponent, MailFilterComponent, ComposeMailComponent, FooterComponent, ButtonComponent],
+  declarations: [DashHeaderComponent, LeftSidenavComponent, MailListComponent, MailFilterComponent, ComposeMailComponent, FooterComponent, ButtonComponent, SideNavComponent],
   exports: [
     DashHeaderComponent,
     LeftSidenavComponent,
@@ -39,7 +40,8 @@ import { ButtonComponent } from './button/button.component';
     NbMenuModule.forRoot(),
     NbCardModule,
     EditorModule,
-    MatInputModule
+    MatInputModule,
+    NbIconModule
   ]
 })
 export class DashboardComponentsModule { }

@@ -3,7 +3,7 @@
     <app-dash-header [user]="userManager.user" class="w-100"></app-dash-header>
   </nb-layout-header>
   <nb-sidebar class="bg-secondary-gradient text-white" [left]="true" [responsive]="true" tag="left">
-    <app-left-sidenav></app-left-sidenav>
+    <app-left-sidenav [active]="'Inbox'" [inboxCount]="90"></app-left-sidenav>
   </nb-sidebar>
   <nb-layout-column class="bg-tertiary-gradient main-content">
     <router-outlet></router-outlet>

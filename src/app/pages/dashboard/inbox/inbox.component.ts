@@ -11,7 +11,12 @@ export class InboxComponent implements OnInit {
   constructor(private userManager: UsermanagerService) { }
 
   ngOnInit() {
-    this.getInbox();
+    console.log('inbox ', this.userManager.inbox);
+    if (this.userManager.inbox.length > 0) {
+      this.loadingInbox = false;
+    } else {
+      this.getInbox();
+    }
   }
 
   getInbox() {

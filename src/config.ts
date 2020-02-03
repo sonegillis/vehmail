@@ -7,7 +7,7 @@ export let SERVICEURLS = {
   getGeoInformation: GATEWAY.GEO_IP + '/ipgeo?',
   verifyPhone: GATEWAY.SERVER_IP + 'api/account/verify-phone/',
   signUp: GATEWAY.SERVER_IP + 'api/account/signup/',
-  login: GATEWAY.SERVER_IP + 'api/account/inbox/',
+  login: GATEWAY.SERVER_IP + 'api/account/login/',
   getMails: GATEWAY.SERVER_IP + 'api/mail/get-messages/',
   getMailDetail: GATEWAY.SERVER_IP + 'api/mail/get-message-details/'
 };
