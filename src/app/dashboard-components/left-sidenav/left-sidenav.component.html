@@ -8,8 +8,8 @@
         <p class="pl-1 pr-2">{{item.title}}</p>
         <span *ngIf="item.count !== undefined" class="badge badge-pill badge-success">{{item.count}}</span>
       </div>
-      <mat-icon *ngIf="!item.hideContent" aria-hidden="false" aria-label="Example home icon" class="align-content-end">expand_more</mat-icon>
-      <mat-icon *ngIf="item.hideContent" aria-hidden="false" aria-label="Example home icon" class="align-content-end">expand_less</mat-icon>
+      <mat-icon *ngIf="item.hideContent" aria-hidden="false" aria-label="Example home icon" class="align-content-end">expand_more</mat-icon>
+      <mat-icon *ngIf="!item.hideContent" aria-hidden="false" aria-label="Example home icon" class="align-content-end">expand_less</mat-icon>
     </div>
     <ng-container *ngIf="!item.hideContent">
       <div *ngFor="let child of item.children" class="mt-1 child-nav" [ngClass]="active === child.title && 'active'" (click)="navigate(child.url)">

@@ -7,6 +7,7 @@
     </div>
   </div>
   <div class="content p-2">
+    <app-multi-input></app-multi-input>
     <mat-form-field class="w-100">
       <input matInput placeholder="To" value="">
     </mat-form-field>
@@ -36,7 +37,6 @@
       tagName="div"
       toolbar=""
       (onInit)="loadingEditor = false">
-
     </editor>
     <div class="d-flex footer">
       <app-button icon="send" size="sm" text="SEND"></app-button>

@@ -1,0 +1,23 @@
+.valid-input {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 4px 6px;
+  border-radius: 6px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  p, mat-icon {
+    color: #fff;
+  }
+}
+
+.input-wrapper {
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  input {
+    border: none;
+    color: #000;
+    font-size: 1.4em;
+    &:focus {
+      outline: none;
+    }
+  }
+}

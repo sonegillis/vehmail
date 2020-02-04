@@ -1,0 +1,8 @@
+<div class="w-100 d-flex flex-wrap input-wrapper">
+  <div *ngFor="let value of values; let i = index" class="d-flex valid-input">
+    <p>{{value}}</p>
+    <mat-icon (click)="removeInput(i)" class="cursor-pointer" aria-hidden="false" aria-label="Example delete icon">close</mat-icon>
+  </div>
+  <input [(ngModel)]="inputValue" (keypress)="validateInput($event)" />
+</div>
+

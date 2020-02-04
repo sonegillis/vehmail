@@ -16,16 +16,21 @@ import { FooterComponent } from './footer/footer.component';
 import {EditorModule} from '@tinymce/tinymce-angular';
 import { ButtonComponent } from './button/button.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
+import { MultiInputComponent } from './multi-input/multi-input.component';
 
 @NgModule({
-  declarations: [DashHeaderComponent, LeftSidenavComponent, MailListComponent, MailFilterComponent, ComposeMailComponent, FooterComponent, ButtonComponent, SideNavComponent],
+  declarations: [DashHeaderComponent, LeftSidenavComponent, MailListComponent,
+                  MailFilterComponent, ComposeMailComponent, FooterComponent,
+                  ButtonComponent, SideNavComponent, MultiInputComponent],
   exports: [
     DashHeaderComponent,
     LeftSidenavComponent,
     MailListComponent,
     FooterComponent,
     ComposeMailComponent,
-    ButtonComponent
+    ButtonComponent,
+    SideNavComponent,
+    MultiInputComponent
   ],
   imports: [
     CommonModule,
