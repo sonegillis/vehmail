@@ -23,7 +23,7 @@ export class LeftSidenavComponent implements OnInit {
           link: [], // goes into angular `routerLink`,
           icon: 'inbox',
           url: '/dashboard/inbox',
-          count: this.inboxCount
+          count: this.userManager.inbox.length
         },
         {
           title: 'Sent Items',
@@ -49,7 +49,7 @@ export class LeftSidenavComponent implements OnInit {
           link: [], // goes into angular `routerLink`
           icon: 'inbox',
           url: '/dashboard/inbox',
-          count: this.inboxCount
+          count: this.userManager.inbox.length
         },
         {
           title: 'Junk Email',
