@@ -30,7 +30,8 @@ import { MultiInputComponent } from './multi-input/multi-input.component';
     ComposeMailComponent,
     ButtonComponent,
     SideNavComponent,
-    MultiInputComponent
+    MultiInputComponent,
+    MailFilterComponent,
   ],
   imports: [
     CommonModule,

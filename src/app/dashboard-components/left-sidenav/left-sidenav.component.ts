@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MailmanagerService} from '../../services/mailmanager/mailmanager.service';
 import {UsermanagerService} from '../../services/usermanager/usermanager.service';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-left-sidenav',

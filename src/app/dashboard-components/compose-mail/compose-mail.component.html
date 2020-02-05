@@ -7,13 +7,9 @@
     </div>
   </div>
   <div class="content p-2">
-    <app-multi-input></app-multi-input>
-    <mat-form-field class="w-100">
-      <input matInput placeholder="To" value="">
-    </mat-form-field>
-    <mat-form-field class="w-100">
-      <input matInput placeholder="Bcc" value="">
-    </mat-form-field>
+    <app-multi-input [placeholder]="'To'"></app-multi-input>
+    <app-multi-input [placeholder]="'Cc'"></app-multi-input>
+    <app-multi-input [placeholder]="'Bcc'"></app-multi-input>
     <mat-form-field class="w-100">
       <input matInput placeholder="Reply to" value="">
     </mat-form-field>

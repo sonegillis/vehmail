@@ -1,6 +1,7 @@
 <section class="mails d-flex bg-tertiary-gradient flex-column pl-2 pr-2 justify-content-center align-items-center">
   <img *ngIf="loadingData" src="assets/gif/loading-full-snake.gif" />
   <div *ngIf="!loadingData" class="h-100 w-100">
+    <app-mail-filter></app-mail-filter>
     <div *ngFor="let mail of mails"
          (mouseenter)="mail.hovered = true"
          (mouseleave)="mail.hovered = false"
