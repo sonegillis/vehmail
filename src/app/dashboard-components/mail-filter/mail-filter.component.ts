@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-mail-filter',
@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mail-filter.component.scss']
 })
 export class MailFilterComponent implements OnInit {
-
+  @Output() selectAll = new EventEmitter();
+  selected = false;
   constructor() { }
 
   ngOnInit() {

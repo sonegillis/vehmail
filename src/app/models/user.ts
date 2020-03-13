@@ -34,6 +34,7 @@ export interface Mail {
   text_html?: string;
   body?: string;
   attachments: string[];
+  selected?: boolean;
 }
 
 

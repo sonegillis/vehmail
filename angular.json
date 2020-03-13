@@ -32,9 +32,12 @@
               "node_modules/@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.min.css",
               "node_modules/@angular/cdk/overlay-prebuilt.css",
               "node_modules/@nebular/theme/styles/prebuilt/default.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/quill/dist/quill.core.css",
+              "node_modules/quill/dist/quill.snow.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": ["node_modules/quill/dist/quill.js"]
           },
           "configurations": {
             "production": {

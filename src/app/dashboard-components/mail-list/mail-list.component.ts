@@ -18,5 +18,10 @@ export class MailListComponent implements OnInit {
   goToMessageDetail(messageID: number, mailBoxID: number, reply: boolean) {
     const url = `/dashboard/mail/${mailBoxID}/${messageID}/${reply}`;
     this.router.navigateByUrl(url);
+    this.router.navigate(['/heloo', '2'])
+  }
+
+  onSelectAll($event: any) {
+    this.mails.forEach(mail => mail.selected = $event);
   }
 }

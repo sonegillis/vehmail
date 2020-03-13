@@ -112,7 +112,6 @@ export class LeftSidenavComponent implements OnInit {
   }
 
   navigate(url: string) {
-    console.log('url is ', url);
     this.router.navigateByUrl(url);
   }
 }

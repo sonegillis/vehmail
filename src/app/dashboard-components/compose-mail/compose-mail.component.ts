@@ -7,13 +7,10 @@ import {TINYMCE_API_KEY} from '../../../config';
   styleUrls: ['./compose-mail.component.scss']
 })
 export class ComposeMailComponent implements OnInit {
-  tinymceAPI: string;
-  loadingEditor = true;
 
   @Output() destroy = new EventEmitter();
   @Output() minimize = new EventEmitter();
   constructor() {
-    this.tinymceAPI = TINYMCE_API_KEY;
   }
 
   ngOnInit() {

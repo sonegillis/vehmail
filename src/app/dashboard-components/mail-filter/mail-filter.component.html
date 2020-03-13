@@ -1,17 +1,17 @@
 <div class="d-flex wrapper justify-content-between align-items-center">
   <div class="d-flex left align-items-center">
-    <p class="m-0 p-0">
+    <p class="m-0 p-0 text-white">
       <ngl-checkbox label="">
-        <input ngl type="checkbox">
+        <input [(ngModel)]="selected" (change)="selectAll.emit(selected)" ngl type="checkbox">
       </ngl-checkbox>
     </p>
-    <mat-icon aria-hidden="false" class="text-danger" aria-label="Example delete icon">expand_more</mat-icon>
+    <mat-icon aria-hidden="false" class="text-white cursor-pointer" aria-label="Example delete icon">expand_more</mat-icon>
   </div>
   <div class="d-flex middle">
 
   </div>
-  <div class="d-flex right">
-    <p>Sort</p>
-    <mat-icon aria-hidden="false" class="text-danger" aria-label="Example delete icon">expand_more</mat-icon>
+  <div class="d-flex right justify-content-end">
+    <p class=" text-white">Sort</p>
+    <mat-icon aria-hidden="false" class="text-white cursor-pointer" aria-label="Example delete icon">expand_more</mat-icon>
   </div>
 </div>

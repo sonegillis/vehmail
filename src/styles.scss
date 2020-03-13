@@ -1403,6 +1403,15 @@ p {
   width: 48%;
 }
 
+.custom-badge {
+  min-width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1px 0;
+  border-radius: 12px;
+  background-color: var(--gradient-color2);
+}
 
 html, body { height: 100%; margin: 0; overflow: hidden }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
