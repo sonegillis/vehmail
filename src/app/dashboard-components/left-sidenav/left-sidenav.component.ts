@@ -11,14 +11,13 @@ import {Router} from '@angular/router';
 export class LeftSidenavComponent implements OnInit {
   @Input() inboxCount: number;
   @Input() active: string;
-  items: Array<object>;
+  items: Array<any>;
   constructor(public mailManager: MailmanagerService,
               private router: Router,
               private userManager: UsermanagerService) {
   }
 
   ngOnInit() {
-    console.log('inbox is ', this.userManager.inbox);
     this.items = [
       {
         title: 'Favorites',
@@ -30,14 +29,14 @@ export class LeftSidenavComponent implements OnInit {
             title: 'Inbox',
             link: [], // goes into angular `routerLink`,
             icon: 'inbox',
-            url: '/dashboard/inbox',
+            url: '/dashboard/mails?type=inbox',
             count: -1
           },
           {
             title: 'Sent Items',
-            url: '#', // goes directly into `href` attribute
+            url: '/dashboard/mails?type=sent', // goes directly into `href` attribute
             icon: 'paper-plane',
-            count: 0
+            count: -1
           },
           {
             title: 'Drafts',
@@ -73,9 +72,10 @@ export class LeftSidenavComponent implements OnInit {
           },
           {
             title: 'Sent Items',
+            url: '/dashboard/sent', // goes directly into `href` attribute
             link: [],
             icon: 'paper-plane',
-            count: 0
+            count: -1
           },
           {
             title: 'Deleted Items',
@@ -112,9 +112,21 @@ export class LeftSidenavComponent implements OnInit {
         ]
       },
     ];
+    this.active = this.active === undefined ? this.items[0].title : this.active;
   }
 
-  navigate(url: string) {
+  getCount(type: string) {
+    console.log(type);
+    switch (type) {
+      case 'Inbox':
+        return this.userManager !== undefined ? this.userManager.inbox.length : 0;
+      case 'Sent Items':
+        return this.userManager !== undefined ? this.userManager.sent.length : 0;
+    }
+  }
+
+  navigate(url: string, title: string) {
+    this.active = title;
     this.router.navigateByUrl(url);
   }
 }

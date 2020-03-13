@@ -14,6 +14,7 @@ export class UsermanagerService {
   private _userGeoInfo: any;
   private _user: User;
   private _inbox: Mail[] = [];
+  private _sent: Mail[] = [];
 
   get inbox(): Mail[] {
     return this._inbox;
@@ -21,6 +22,14 @@ export class UsermanagerService {
 
   set inbox(inbox: Mail[]) {
     this._inbox = inbox;
+  }
+
+  get sent(): Mail[] {
+    return this._sent;
+  }
+
+  set sent(sent: Mail[]) {
+    this._sent = sent;
   }
 
   get user(): User {
@@ -144,8 +153,15 @@ export class UsermanagerService {
         const {status} = result;
         const {status_text} = result;
         if (status === 200) {
-          this.inbox = result.data.messages;
-          resolve();
+          switch (data.type) {
+            case 'inbox':
+              this.inbox = result.data.messages;
+              break;
+            case 'sent':
+              this.sent = result.data.messages;
+              break;
+          }
+          resolve(result.data.messages);
         } else {
           reject(status_text);
         }

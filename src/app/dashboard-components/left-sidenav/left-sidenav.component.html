@@ -12,13 +12,16 @@
       <mat-icon *ngIf="!item.hideContent" aria-hidden="false" aria-label="Example home icon" class="d-flex align-items-center justify-content-center">expand_less</mat-icon>
     </div>
     <ng-container *ngIf="!item.hideContent">
-      <div *ngFor="let child of item.children" class="mt-1 child-nav" [ngClass]="active === child.title && 'active'" (click)="navigate(child.url)">
+      <div *ngFor="let child of item.children" class="mt-1 child-nav" [ngClass]="active === child.title && 'active'" (click)="navigate(child.url, child.title)">
         <div class="nav-item-child d-flex align-items-center justify-content-between">
           <div class="d-flex">
             <nb-icon [icon]="child.icon"></nb-icon>
             <p class="pl-1 pr-2">{{child.title}}</p>
-            <span *ngIf="child.count !== undefined && child.count !== -1" class="custom-badge">{{child.count}}</span>
-            <span *ngIf="child.count === -1" class="custom-badge">{{this.userManager.inbox.length}}</span>
+            <span *ngIf="child.count !== undefined && child.count !== -1 else objectCount" class="custom-badge">{{child.count}}</span>
+            <ng-template #objectCount>
+              <span *ngIf="child.title === 'Inbox'" class="custom-badge">{{userManager.inbox.length}}</span>
+              <span *ngIf="child.title === 'Sent Items'" class="custom-badge">{{userManager.sent.length}}</span>
+            </ng-template>
           </div>
         </div>
       </div>

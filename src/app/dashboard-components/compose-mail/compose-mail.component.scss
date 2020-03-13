@@ -2,7 +2,6 @@
   position: fixed;
   right: 1%;
   bottom: 2%;
-  height: 750px;
   width: 700px;
   background: #fff;
   z-index: 5;
@@ -29,8 +28,7 @@
   }
 
   .footer {
-    position: absolute;
-    bottom: 6px;
+    margin: 6px;
   }
 
 }
@@ -38,6 +36,11 @@
 .editor-loader {
   width: 100%;
   height: 300px;
+}
+
+.content {
+  height: 650px;
+  overflow-y: scroll;
 }
 
 mat-form-field input {

@@ -122,7 +122,7 @@ export class AuthComponent implements OnInit {
     this.userManager.login(this.signInData).then(response => {
       this.isLoading = false;
       console.log('inbox succesfull');
-      this.router.navigate(['/dashboard']);
+      this.router.navigateByUrl('/dashboard/mails?type=inbox');
     }, error => {
       this.isLoading = false;
       console.log(error);
