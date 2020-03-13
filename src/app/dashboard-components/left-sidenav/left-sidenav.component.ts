@@ -11,104 +11,107 @@ import {Router} from '@angular/router';
 export class LeftSidenavComponent implements OnInit {
   @Input() inboxCount: number;
   @Input() active: string;
-  items = [
-    {
-      title: 'Favorites',
-      expanded: true,
-      icon: 'star',
-      hideContent: false,
-      children: [
-        {
-          title: 'Inbox',
-          link: [], // goes into angular `routerLink`,
-          icon: 'inbox',
-          url: '/dashboard/inbox',
-          count: this.userManager.inbox.length
-        },
-        {
-          title: 'Sent Items',
-          url: '#', // goes directly into `href` attribute
-          icon: 'paper-plane',
-          count: 0
-        },
-        {
-          title: 'Drafts',
-          link: [],
-          icon: 'edit',
-          count: 0
-        },
-      ],
-    },
-    {
-      title: 'Folders',
-      icon: 'folder',
-      hideContent: false,
-      children: [
-        {
-          title: 'Inbox',
-          link: [], // goes into angular `routerLink`
-          icon: 'inbox',
-          url: '/dashboard/inbox',
-          count: this.userManager.inbox.length
-        },
-        {
-          title: 'Junk Email',
-          url: '#', // goes directly into `href` attribute
-          icon: 'slash',
-          count: 0
-        },
-        {
-          title: 'Drafts',
-          link: [],
-          icon: 'edit',
-          count: 0
-        },
-        {
-          title: 'Sent Items',
-          link: [],
-          icon: 'paper-plane',
-          count: 0
-        },
-        {
-          title: 'Deleted Items',
-          link: [],
-          icon: 'trash',
-          count: 0
-        },
-        {
-          title: 'Archive',
-          link: [],
-          icon: 'archive',
-          count: 0
-        },
-      ],
-    },
-    {
-      title: 'Groups',
-      hideContent: false,
-      icon: 'options-2-outline',
-      children: [
-      ],
-    },
-    {
-      title: 'Domains',
-      hideContent: false,
-      link: [],
-      icon: 'options-2-outline',
-      count: 1,
-      children: [
-        {
-          title: 'itdesign.com',
-          link: []
-        }
-      ]
-    },
-  ];
-  constructor(private mailManager: MailmanagerService,
+  items: Array<object>;
+  constructor(public mailManager: MailmanagerService,
               private router: Router,
-              private userManager: UsermanagerService) { }
+              private userManager: UsermanagerService) {
+  }
 
   ngOnInit() {
+    console.log('inbox is ', this.userManager.inbox);
+    this.items = [
+      {
+        title: 'Favorites',
+        expanded: true,
+        icon: 'star',
+        hideContent: false,
+        children: [
+          {
+            title: 'Inbox',
+            link: [], // goes into angular `routerLink`,
+            icon: 'inbox',
+            url: '/dashboard/inbox',
+            count: -1
+          },
+          {
+            title: 'Sent Items',
+            url: '#', // goes directly into `href` attribute
+            icon: 'paper-plane',
+            count: 0
+          },
+          {
+            title: 'Drafts',
+            link: [],
+            icon: 'edit',
+            count: 0
+          },
+        ],
+      },
+      {
+        title: 'Folders',
+        icon: 'folder',
+        hideContent: false,
+        children: [
+          {
+            title: 'Inbox',
+            link: [], // goes into angular `routerLink`
+            icon: 'inbox',
+            url: '/dashboard/inbox',
+            count: -1
+          },
+          {
+            title: 'Junk Email',
+            url: '#', // goes directly into `href` attribute
+            icon: 'slash',
+            count: 0
+          },
+          {
+            title: 'Drafts',
+            link: [],
+            icon: 'edit',
+            count: 0
+          },
+          {
+            title: 'Sent Items',
+            link: [],
+            icon: 'paper-plane',
+            count: 0
+          },
+          {
+            title: 'Deleted Items',
+            link: [],
+            icon: 'trash',
+            count: 0
+          },
+          {
+            title: 'Archive',
+            link: [],
+            icon: 'archive',
+            count: 0
+          },
+        ],
+      },
+      {
+        title: 'Groups',
+        hideContent: false,
+        icon: 'options-2-outline',
+        children: [
+        ],
+      },
+      {
+        title: 'Domains',
+        hideContent: false,
+        link: [],
+        icon: 'options-2-outline',
+        count: 1,
+        children: [
+          {
+            title: 'itdesign.com',
+            link: []
+          }
+        ]
+      },
+    ];
   }
 
   navigate(url: string) {

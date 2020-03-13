@@ -8,7 +8,8 @@ import {UsermanagerService} from '../../../services/usermanager/usermanager.serv
 })
 export class InboxComponent implements OnInit {
   loadingInbox = true;
-  constructor(private userManager: UsermanagerService) { }
+  loadingInboxErr = false;
+  constructor(public userManager: UsermanagerService) { }
 
   ngOnInit() {
     console.log('inbox ', this.userManager.inbox);
@@ -22,10 +23,10 @@ export class InboxComponent implements OnInit {
   getInbox() {
     this.userManager.getMails({type: 'inbox'}).then(_ => {
       this.loadingInbox = false;
+      this.loadingInboxErr = false;
       console.log(_);
-    }, _ => {
-      this.loadingInbox = false;
-      console.log(_);
+    }).catch(error => {
+      this.loadingInboxErr = true;
     });
   }
 }

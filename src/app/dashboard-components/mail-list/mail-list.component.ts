@@ -10,6 +10,8 @@ import {Router} from '@angular/router';
 export class MailListComponent implements OnInit {
   @Input() mails: Mail[];
   @Input() loadingData: boolean;
+  @Input() loadingDataErr: boolean;
+
   constructor(private router: Router) { }
 
   ngOnInit() {
@@ -18,7 +20,6 @@ export class MailListComponent implements OnInit {
   goToMessageDetail(messageID: number, mailBoxID: number, reply: boolean) {
     const url = `/dashboard/mail/${mailBoxID}/${messageID}/${reply}`;
     this.router.navigateByUrl(url);
-    this.router.navigate(['/heloo', '2'])
   }
 
   onSelectAll($event: any) {

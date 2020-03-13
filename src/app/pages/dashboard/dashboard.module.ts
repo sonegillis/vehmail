@@ -22,6 +22,6 @@ import { MessageDetailComponent } from './message-detail/message-detail.componen
     NbEvaIconsModule,
     MatIconModule,
   ],
-  providers: [NbSidebarService, { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true }], // we need this service for the sidebar
+  providers: [NbSidebarService, { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true }],
 })
 export class DashboardModule { }

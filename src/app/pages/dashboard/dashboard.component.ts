@@ -8,7 +8,7 @@ import {UsermanagerService} from '../../services/usermanager/usermanager.service
 })
 export class DashboardComponent implements OnInit {
   openEditor = false;
-  constructor(private userManager: UsermanagerService) { }
+  constructor(public userManager: UsermanagerService) { }
 
   ngOnInit() {
     this.initialiseDashboard();

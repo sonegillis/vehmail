@@ -17,7 +17,8 @@
           <div class="d-flex">
             <nb-icon [icon]="child.icon"></nb-icon>
             <p class="pl-1 pr-2">{{child.title}}</p>
-            <span *ngIf="child.count !== undefined" class="custom-badge">{{child.count}}</span>
+            <span *ngIf="child.count !== undefined && child.count !== -1" class="custom-badge">{{child.count}}</span>
+            <span *ngIf="child.count === -1" class="custom-badge">{{this.userManager.inbox.length}}</span>
           </div>
         </div>
       </div>

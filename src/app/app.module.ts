@@ -11,6 +11,7 @@ import {DashboardModule} from './pages/dashboard/dashboard.module';
 import {NbThemeModule} from '@nebular/theme';
 import {DashboardComponentsModule} from './dashboard-components/dashboard-components.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {UsermanagerService} from './services/usermanager/usermanager.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     NgbModule
   ],
-  providers: [],
+  providers: [UsermanagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

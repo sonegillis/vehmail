@@ -13,11 +13,11 @@ import {MatInputModule, MatPaginatorModule, MatTableModule} from '@angular/mater
 import {NglCheckboxesModule} from 'ng-lightning';
 import { ComposeMailComponent } from './compose-mail/compose-mail.component';
 import { FooterComponent } from './footer/footer.component';
-// import {EditorModule} from '@tinymce/tinymce-angular';
 import { ButtonComponent } from './button/button.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { MultiInputComponent } from './multi-input/multi-input.component';
 import {EditorModule} from 'primeng/editor';
+import {UsermanagerService} from '../services/usermanager/usermanager.service';
 
 @NgModule({
   declarations: [DashHeaderComponent, LeftSidenavComponent, MailListComponent,
@@ -49,6 +49,7 @@ import {EditorModule} from 'primeng/editor';
     MatInputModule,
     NbIconModule,
     EditorModule,
-  ]
+  ],
+  providers: [UsermanagerService]
 })
 export class DashboardComponentsModule { }
